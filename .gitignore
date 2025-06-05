@@ -26,6 +26,9 @@
 # Visual Studio cache directory
 .vs/
 
+Assets/StreamingAssets/*.json
+
+
 # Gradle cache directory
 .gradle/
 
