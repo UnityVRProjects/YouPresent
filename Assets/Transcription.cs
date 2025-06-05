@@ -4,16 +4,20 @@ using UnityEngine.Networking;
 using System.Text;
 using System.IO;
 
+
 public class Transcription : MonoBehaviour
 {
+    public UnityAndGeminiV3 geminiManager;
+
     private string apiKey = "AIzaSyBPi7ETtMkduzgd5_1hbdg-_5YBS0QI5io";  // Replace with your actual API key
 
     void Start()
     {
-        StartCoroutine(SynthesizeSpeech("Hello from Google TTS!"));
+        geminiManager = GetComponent<UnityAndGeminiV3>();
+        StartCoroutine(SynthesizeSpeech(geminiManager.reply));
     }
 
-    IEnumerator SynthesizeSpeech(string text)
+    public IEnumerator SynthesizeSpeech(string text)
     {
         string url = $"https://texttospeech.googleapis.com/v1/text:synthesize?key={apiKey}";
 
@@ -65,7 +69,7 @@ public class Transcription : MonoBehaviour
             var audioSource = GetComponent<AudioSource>();
             audioSource.clip = clip;
             audioSource.Play();
-            Debug.Log("Audio is now playing!");
+            Debug.Log("Audio is now playing!" + geminiManager.reply);
         }
     }
 

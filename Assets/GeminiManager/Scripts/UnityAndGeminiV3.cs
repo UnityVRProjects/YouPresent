@@ -99,6 +99,8 @@ public class UnityAndGeminiV3: MonoBehaviour
     public TMP_Text uiText;
     public string botInstructions;
     private TextContent[] chatHistory;
+    public string reply;
+    public Transcription TranscriptionManager;
 
 
     [Header("Prompt Function")]
@@ -146,7 +148,8 @@ public class UnityAndGeminiV3: MonoBehaviour
     void Start()
     {
         UnityAndGeminiKey jsonApiKey = JsonUtility.FromJson<UnityAndGeminiKey>(jsonApi.text);
-        apiKey = jsonApiKey.key;   
+        apiKey = jsonApiKey.key;
+        TranscriptionManager = GetComponent<Transcription>();
         chatHistory = new TextContent[] { };
         if (prompt != ""){StartCoroutine( SendPromptRequestToGemini(prompt));};
         if (imagePrompt != ""){StartCoroutine( SendPromptRequestToGeminiImageGenerator(imagePrompt));};
@@ -242,8 +245,13 @@ public class UnityAndGeminiV3: MonoBehaviour
                 if (response.candidates.Length > 0 && response.candidates[0].content.parts.Length > 0)
                     {
                         //This is the response to your request
-                        string reply = response.candidates[0].content.parts[0].text;
-                        TextContent botContent = new TextContent
+                         reply = response.candidates[0].content.parts[0].text;
+                    if (TranscriptionManager != null)
+                    {
+                        StartCoroutine(TranscriptionManager.SynthesizeSpeech(reply));
+                    }
+
+                    TextContent botContent = new TextContent
                         {
                             role = "model",
                             parts = new TextPart[]
