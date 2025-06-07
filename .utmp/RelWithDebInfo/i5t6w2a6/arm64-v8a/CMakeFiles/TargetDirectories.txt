@@ -1,0 +1,5 @@
+C:/Users/j6paz/YouPresent/.utmp/RelWithDebInfo/i5t6w2a6/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/j6paz/YouPresent/.utmp/RelWithDebInfo/i5t6w2a6/arm64-v8a/CMakeFiles/rebuild_cache.dir
+C:/Users/j6paz/YouPresent/.utmp/RelWithDebInfo/i5t6w2a6/arm64-v8a/GameActivity/CMakeFiles/game.dir
+C:/Users/j6paz/YouPresent/.utmp/RelWithDebInfo/i5t6w2a6/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+C:/Users/j6paz/YouPresent/.utmp/RelWithDebInfo/i5t6w2a6/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
