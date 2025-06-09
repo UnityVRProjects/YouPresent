@@ -197,6 +197,11 @@ public class UnityAndGeminiV3: MonoBehaviour
         StartCoroutine( SendChatRequestToGemini(userMessage));
     }
 
+    public void SendUserMessage(string message)
+    {
+        StartCoroutine(SendChatRequestToGemini(message));
+    }
+
     private IEnumerator SendChatRequestToGemini(string newMessage)
     {
 
