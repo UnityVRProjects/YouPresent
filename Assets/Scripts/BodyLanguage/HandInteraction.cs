@@ -1,10 +1,8 @@
-using TMPro;
 using UnityEngine;
 
 public class HandInteraction : MonoBehaviour
 {
     [SerializeField] Transform leftHand, rightHand;
-    [SerializeField] TextMeshPro leftRotDisplay, rightRotDisplay;
 
     TimeManager timeManager;
 
@@ -21,8 +19,6 @@ public class HandInteraction : MonoBehaviour
     {
         Vector3 l_RotationAngles = leftHand.eulerAngles;
         Vector3 r_RotationAngles = rightHand.eulerAngles;
-        leftRotDisplay.text = l_RotationAngles.ToString();
-        rightRotDisplay.text = r_RotationAngles.ToString();
 
         if(isHandDown(l_RotationAngles) && isHandDown(r_RotationAngles))
         {
