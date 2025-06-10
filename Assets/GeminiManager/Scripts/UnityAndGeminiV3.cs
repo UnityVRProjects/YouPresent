@@ -238,18 +238,14 @@ public class UnityAndGeminiV3: MonoBehaviour
         float[] slideTimes = SlidesManager.getSlideTime();
         string promptText = "";
 
-        promptText += "Using the inputted data regarding the user's performance while public speaking: please evaluate their performance based off of the following criteria: slide time. " +
-            "For Timing, here is the time they spent on each slide: ";
-
-        for (int i = 0; i < slideTimes.Length; i++){
-            promptText += $"Slide {i + 1}: {slideTimes[i]:F1} seconds, ";
-        }
-
+        promptText += "Using the inputted data regarding the user's performance while public speaking: please evaluate their performance. ";
 
 
         promptText += "For Presentation, here are multiple time values regarding user's eye contact: " + TimeManagerDataConcatenate() + " elapsedTime is time spent total during the presentation, audienceTime is time spent total looking at the audience, projectorTime is time spent looking at the projector, lookingAtNothing_Num is the amount of times the user looks at nothing for more than 6 seconds, and disengagedHands_Num is the number of times the user did nothing with their hands during presentation for 10+ seconds straight";
             
-           promptText += "Please proceed and go over each of the criteria separately and explain what they did well, and what could be improved, if anything. " +
+           promptText += "Please proceed and go over each of the criteria separa" +
+            "" +
+            "tely and explain what they did well, and what could be improved, if anything. " +
             "Finally, at the end of it ask them if they have any questions about your evaluation or if they'd like any advice.";
 
         string url = $"{apiEndpoint}?key={apiKey}";
@@ -280,8 +276,15 @@ public class UnityAndGeminiV3: MonoBehaviour
                 {
                     //This is the response to your request
                     string text = response.candidates[0].content.parts[0].text;
-                    TranscriptionManager.SynthesizeSpeech(text);
-                    Debug.Log(text);
+                    if (text.Length > 0)
+                    {
+                        StartCoroutine(TranscriptionManager.SynthesizeSpeech(text));
+                    }
+                    else
+                    {
+                        Debug.Log("error");
+                    }
+                        Debug.Log(text);
                 }
                 else
                 {
