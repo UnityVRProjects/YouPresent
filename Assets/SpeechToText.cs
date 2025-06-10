@@ -40,7 +40,7 @@ public class SpeechToText : MonoBehaviour
     [Tooltip("Hz")]
     public int sampleRate = 16000;
     [Tooltip("Seconds")]
-    public float recordSeconds = 5f;
+    public float recordSeconds = 10f;
 
     [Header("Gemini script")]
     public UnityAndGeminiV3 geminiManager;

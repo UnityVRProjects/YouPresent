@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using TMPro;
 using System.IO; 
 using System;
+using System.Linq;
+using Unity.VisualScripting;
 
 [System.Serializable]
 public class UnityAndGeminiKey
@@ -151,10 +153,14 @@ public class UnityAndGeminiV3: MonoBehaviour
         apiKey = jsonApiKey.key;
         TranscriptionManager = GetComponent<Transcription>();
         chatHistory = new TextContent[] { };
+
+
         if (prompt != ""){StartCoroutine( SendPromptRequestToGemini(prompt));};
         if (imagePrompt != ""){StartCoroutine( SendPromptRequestToGeminiImageGenerator(imagePrompt));};
         if (mediaPrompt != "" && mediaFilePath != ""){StartCoroutine(SendPromptMediaRequestToGemini(mediaPrompt, mediaFilePath));};
     }
+
+ 
 
     private IEnumerator SendPromptRequestToGemini(string promptText)
     {
@@ -183,6 +189,47 @@ public class UnityAndGeminiV3: MonoBehaviour
                         string text = response.candidates[0].content.parts[0].text;
                         Debug.Log(text);
                     }
+                else
+                {
+                    Debug.Log("No text found.");
+
+        string url = $"{apiEndpoint}?key={apiKey}";                }
+            }
+        }
+    }
+
+    private IEnumerator SendPerformanceDataToGemini(string promptText)
+    {
+
+        promptText = "Using the inputted data regarding the user's performance while public speaking: please evaluate their performance based off of the following criteria. Please proceed and go over each of the aspects separately and explain what they did well, and what could be improved, if anything. Finally, at the end of it ask them if they have any questions.";
+
+        string jsonData = "{\"contents\": [{\"parts\": [{\"text\": \"{" + promptText + "}\"}]}]}";
+
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
+
+        // Create a UnityWebRequest with the JSON data
+        using (UnityWebRequest www = new UnityWebRequest(url, "POST"))
+        {
+            www.uploadHandler = new UploadHandlerRaw(jsonToSend);
+            www.downloadHandler = new DownloadHandlerBuffer();
+            www.SetRequestHeader("Content-Type", "application/json");
+
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError(www.error);
+            }
+            else
+            {
+                Debug.Log("Request complete!");
+                TextResponse response = JsonUtility.FromJson<TextResponse>(www.downloadHandler.text);
+                if (response.candidates.Length > 0 && response.candidates[0].content.parts.Length > 0)
+                {
+                    //This is the response to your request
+                    string text = response.candidates[0].content.parts[0].text;
+                    Debug.Log(text);
+                }
                 else
                 {
                     Debug.Log("No text found.");
