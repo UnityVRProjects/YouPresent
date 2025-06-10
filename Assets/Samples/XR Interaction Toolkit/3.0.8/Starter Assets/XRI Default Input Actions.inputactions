@@ -452,15 +452,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Trigger",
-                    "type": "Value",
-                    "id": "54c8aa9e-30e0-488b-ab61-32148aac07a1",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -868,17 +859,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Thumbstick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5b1ad0a3-90dd-4954-8547-3abe7061b895",
-                    "path": "<XRController>{RightHand}/{Trigger}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
