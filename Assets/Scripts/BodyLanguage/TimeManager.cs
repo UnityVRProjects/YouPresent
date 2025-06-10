@@ -12,6 +12,8 @@ public class TimeManager : MonoBehaviour
     bool areHandsDown = false;
     bool areHandsDisengaged = false;
 
+    bool hasStarted = false;
+
     const float LOOKING_AT_NOTHING_LIMIT = 6.0f;
     const float HANDS_DOWN_LIMIT = 10.0f;
 
@@ -33,6 +35,13 @@ public class TimeManager : MonoBehaviour
 
     void Update()
     {
+        //if (OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
+        //    StartTime();
+        //if (OVRInput.Get(OVRInput.RawButton.LIndexTrigger))
+        //    PauseTime();
+        if (!hasStarted)
+            return;
+
         elapsedTime += Time.deltaTime;
         elapsedText.text = "Elapsed: " + FormattedTime(elapsedTime) + " (" + lookingAtNothing_num.ToString() + ")";
 
@@ -86,7 +95,6 @@ public class TimeManager : MonoBehaviour
         }
 
     }
-
     string FormattedTime(float timeVal)
     {
         int minutes = Mathf.FloorToInt(timeVal / 60);
@@ -96,6 +104,10 @@ public class TimeManager : MonoBehaviour
         return minutes.ToString() + ":" + decSeconds.ToString() + seconds.ToString();
     }
 
+    /**
+     * These methods aren't needed to manipulate the TimeManager or collect data.
+     */
+    #region Setter Methods
     public void SetIsLookingAtAudience(bool val) { 
         isLookingAtAudience=val;
     }
@@ -112,7 +124,13 @@ public class TimeManager : MonoBehaviour
             timeDisengagedHands = HANDS_DOWN_LIMIT;
         }
     }
+    #endregion
 
+
+    /**
+     * Use these methods to start, stop, pause timer and retrieve the collected data.
+     */
+    #region RELEVANT METHODS
     public Dictionary<string, string> CollectedData() {
 
         Dictionary<string, string> data = new Dictionary<string, string> {
@@ -126,4 +144,32 @@ public class TimeManager : MonoBehaviour
         
         return data;
     }
+
+    public void StartTime()
+    {
+        hasStarted = true;
+    }
+
+    public void PauseTime() 
+    {
+        hasStarted = false;
+    }
+
+    public void ResetTime() 
+    {
+        elapsedTime = 0;
+        audienceTime = 0;
+        projectorTime = 0;
+        handsDownTime = 0;
+        timeLookingAtNothing = LOOKING_AT_NOTHING_LIMIT;
+        timeDisengagedHands = HANDS_DOWN_LIMIT;
+        warningText.enabled = false;
+    }
+    public void StopTime()
+    {
+        PauseTime();
+        ResetTime();
+    }
+    #endregion
 }
+
