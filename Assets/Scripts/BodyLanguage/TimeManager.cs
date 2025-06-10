@@ -30,7 +30,8 @@ public class TimeManager : MonoBehaviour
     {
         timeLookingAtNothing = LOOKING_AT_NOTHING_LIMIT;
         timeDisengagedHands = HANDS_DOWN_LIMIT;
-        warningText.enabled = false;
+        if (warningText != null)
+            warningText.enabled = false;
     }
 
     void Update()
@@ -82,7 +83,8 @@ public class TimeManager : MonoBehaviour
         }
 
         if (timeLookingAtNothing <= 0) {
-            warningText.enabled = true;
+            if(warningText != null) 
+                warningText.enabled = true;
             if (!isLookingAtNothing) {
                 lookingAtNothing_num++;
                 isLookingAtNothing = true;
@@ -90,7 +92,8 @@ public class TimeManager : MonoBehaviour
         }
         else
         {
-            warningText.enabled = false;
+            if(warningText != null)
+                warningText.enabled = false;
             isLookingAtNothing = false;
         }
 
@@ -163,7 +166,8 @@ public class TimeManager : MonoBehaviour
         handsDownTime = 0;
         timeLookingAtNothing = LOOKING_AT_NOTHING_LIMIT;
         timeDisengagedHands = HANDS_DOWN_LIMIT;
-        warningText.enabled = false;
+        if(warningText != null)
+            warningText.enabled = false;
     }
     public void StopTime()
     {
