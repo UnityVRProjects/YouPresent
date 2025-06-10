@@ -11,6 +11,8 @@ public class SlideshowManager : MonoBehaviour
     [SerializeField] AudienceManager audienceManager;
     [SerializeField] UnityAndGeminiV3 avatar;
     [SerializeField] SpeechToText speechToText;
+    [SerializeField] GameObject MainMenu;
+    [SerializeField] GameObject PresentingMenu;
     Image[] slides;
     float[] slideTimers;
     Image currSlide;
@@ -46,6 +48,7 @@ public class SlideshowManager : MonoBehaviour
         {
             slideTimers[x] = 0f;
         }
+        lewisManager.Stage();
     }
 
     // Update is called once per frame
@@ -160,7 +163,8 @@ public class SlideshowManager : MonoBehaviour
         audienceManager.EndApplause();
         lewisManager.Stage();
 
-
+        MainMenu.SetActive(true);
+        PresentingMenu.SetActive(false);
     }
 
     public float[] getSlideTime()
@@ -194,6 +198,7 @@ public class SlideshowManager : MonoBehaviour
     public void setMyTimer(int index, float time)
     {
         myTimers[index] = time;
+        Debug.Log("Timer " + index + " updated to time " + time);
         return;
     }
 
