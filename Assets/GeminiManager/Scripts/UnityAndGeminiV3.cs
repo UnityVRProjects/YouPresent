@@ -30,7 +30,6 @@ public class TextPart
     public string text;
 }
 
-// Image-capable part
 [System.Serializable]
 public class ImagePart
 {
@@ -77,7 +76,7 @@ public class ImageResponse
 }
 
 
-// For text requests
+
 [System.Serializable]
 public class ChatRequest
 {
@@ -103,6 +102,8 @@ public class UnityAndGeminiV3: MonoBehaviour
     private TextContent[] chatHistory;
     public string reply;
     public Transcription TranscriptionManager;
+    public SlideshowManager SlidesManager;
+    public TimeManager TimeManager;
 
 
     [Header("Prompt Function")]
@@ -113,7 +114,7 @@ public class UnityAndGeminiV3: MonoBehaviour
     public Material skyboxMaterial; 
 
     [Header("Media Prompt Function")]
-    // Receives files with a maximum of 20 MB
+    
     public string mediaFilePath = "";
     public string mediaPrompt = "";
     public enum MediaType
@@ -149,15 +150,31 @@ public class UnityAndGeminiV3: MonoBehaviour
 
     void Start()
     {
+
+        Debug.Log("Gemini Scene Functionality is inactive due to migration of command to be run by other classes, to retrieve previous functionality please copy contents of runGemini() into Start() of this .cs file");
+
+    }
+
+    //The below method is what I want you guys to test 
+
+    public void runGemini()
+    {
+
         UnityAndGeminiKey jsonApiKey = JsonUtility.FromJson<UnityAndGeminiKey>(jsonApi.text);
         apiKey = jsonApiKey.key;
         TranscriptionManager = GetComponent<Transcription>();
         chatHistory = new TextContent[] { };
 
+        // comment just the line below this comment to remove the performance data eval section if its buggy and just wanting to run Gemini feedback mode from user to ask questions and use runGemini() after presentation is over
+        StartCoroutine(SendPerformanceDataToGemini());
 
-        if (prompt != ""){StartCoroutine( SendPromptRequestToGemini(prompt));};
-        if (imagePrompt != ""){StartCoroutine( SendPromptRequestToGeminiImageGenerator(imagePrompt));};
-        if (mediaPrompt != "" && mediaFilePath != ""){StartCoroutine(SendPromptMediaRequestToGemini(mediaPrompt, mediaFilePath));};
+        if (prompt != "") { StartCoroutine(SendPromptRequestToGemini(prompt)); }
+        ;
+        if (imagePrompt != "") { StartCoroutine(SendPromptRequestToGeminiImageGenerator(imagePrompt)); }
+        ;
+        if (mediaPrompt != "" && mediaFilePath != "") { StartCoroutine(SendPromptMediaRequestToGemini(mediaPrompt, mediaFilePath)); }
+        ;
+
     }
 
  
@@ -185,7 +202,7 @@ public class UnityAndGeminiV3: MonoBehaviour
                 TextResponse response = JsonUtility.FromJson<TextResponse>(www.downloadHandler.text);
                 if (response.candidates.Length > 0 && response.candidates[0].content.parts.Length > 0)
                     {
-                        //This is the response to your request
+                      
                         string text = response.candidates[0].content.parts[0].text;
                         Debug.Log(text);
                     }
@@ -193,15 +210,50 @@ public class UnityAndGeminiV3: MonoBehaviour
                 {
                     Debug.Log("No text found.");
 
-        string url = $"{apiEndpoint}?key={apiKey}";                }
+         url = $"{apiEndpoint}?key={apiKey}";                }
             }
         }
     }
 
-    private IEnumerator SendPerformanceDataToGemini(string promptText)
+    public string TimeManagerDataConcatenate()
     {
 
-        promptText = "Using the inputted data regarding the user's performance while public speaking: please evaluate their performance based off of the following criteria. Please proceed and go over each of the aspects separately and explain what they did well, and what could be improved, if anything. Finally, at the end of it ask them if they have any questions.";
+        string result = "";
+
+        Dictionary<string, string> data = TimeManager.CollectedData();
+        foreach(KeyValuePair<string, string> entry in data)
+        {
+
+            result += entry.Key + ":" + entry.Value;
+
+        }
+
+        return result;
+
+    }
+
+    private IEnumerator SendPerformanceDataToGemini()
+    {
+
+        float[] slideTimes = SlidesManager.getSlideTime();
+        string promptText = "";
+
+        promptText += "Using the inputted data regarding the user's performance while public speaking: please evaluate their performance based off of the following criteria: Timing, Presentation, and Volume. " +
+            "For Timing, here is the time they spent on each slide: ";
+
+        for (int i = 0; i < slideTimes.Length; i++){
+            promptText += $"Slide {i + 1}: {slideTimes[i]:F1} seconds, ";
+        }
+
+
+
+        promptText += "For Presentation, here are multiple time values regarding user's eye contact: " + TimeManagerDataConcatenate() + " elapsedTime is time spent total during the presentation, audienceTime is time spent total looking at the audience, projectorTime is time spent looking at the projector, lookingAtNothing_Num is the amount of times the user looks at nothing for more than 6 seconds, and disengagedHands_Num is the number of times the user did nothing with their hands during presentation for 10+ seconds straight";
+            
+           promptText += "Please proceed and go over each of the criteria separately and explain what they did well, and what could be improved, if anything. " +
+            "Finally, at the end of it ask them if they have any questions about your evaluation or if they'd like any advice.";
+
+        string url = $"{apiEndpoint}?key={apiKey}";
+
 
         string jsonData = "{\"contents\": [{\"parts\": [{\"text\": \"{" + promptText + "}\"}]}]}";
 
@@ -233,7 +285,11 @@ public class UnityAndGeminiV3: MonoBehaviour
                 else
                 {
                     Debug.Log("No text found.");
+
+                    url = $"{apiEndpoint}?key={apiKey}";
                 }
+
+
             }
         }
     }
@@ -296,7 +352,7 @@ public class UnityAndGeminiV3: MonoBehaviour
                 TextResponse response = JsonUtility.FromJson<TextResponse>(www.downloadHandler.text);
                 if (response.candidates.Length > 0 && response.candidates[0].content.parts.Length > 0)
                     {
-                        //This is the response to your request
+                       
                          reply = response.candidates[0].content.parts[0].text;
                     if (TranscriptionManager != null)
                     {
@@ -332,7 +388,7 @@ public class UnityAndGeminiV3: MonoBehaviour
     {
         string url = $"{imageEndpoint}?key={apiKey}";
         
-        // Create the proper JSON structure with model specification
+    
         string jsonData = $@"{{
             ""contents"": [{{
                 ""parts"": [{{
@@ -346,7 +402,7 @@ public class UnityAndGeminiV3: MonoBehaviour
 
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
 
-        // Create a UnityWebRequest with the JSON data
+      
         using (UnityWebRequest www = new UnityWebRequest(url, "POST"))
         {
             www.uploadHandler = new UploadHandlerRaw(jsonToSend);
@@ -362,9 +418,9 @@ public class UnityAndGeminiV3: MonoBehaviour
             else 
             {
                 Debug.Log("Request complete!");
-                Debug.Log("Full response: " + www.downloadHandler.text); // Log full response for debugging
+                Debug.Log("Full response: " + www.downloadHandler.text); 
                 
-                // Parse the JSON response
+               
                 try 
                 {
                     ImageResponse response = JsonUtility.FromJson<ImageResponse>(www.downloadHandler.text);
@@ -381,10 +437,10 @@ public class UnityAndGeminiV3: MonoBehaviour
                             }
                             else if (part.inlineData != null && !string.IsNullOrEmpty(part.inlineData.data))
                             {
-                                // This is the base64 encoded image data
+                          
                                 byte[] imageBytes = System.Convert.FromBase64String(part.inlineData.data);
                                 
-                                // Create a texture from the bytes
+                              
                                 Texture2D tex = new Texture2D(2, 2);
                                 tex.LoadImage(imageBytes);
                                 byte[] pngBytes = tex.EncodeToPNG();
@@ -393,7 +449,7 @@ public class UnityAndGeminiV3: MonoBehaviour
                                 Debug.Log("Saved to: " + path);
                                 Debug.Log("Image received successfully!");
 
-                                // Load the saved image back as Texture2D
+                              
                                 string imagePath = Path.Combine(Application.persistentDataPath, "gemini-image.png");
                                 
                                 Texture2D panoramaTex = new Texture2D(2, 2);
@@ -401,10 +457,10 @@ public class UnityAndGeminiV3: MonoBehaviour
 
                                 Texture2D properlySizedTex = ResizeTexture(panoramaTex, 1024, 512);
                                 
-                                // Apply to a panoramic skybox material
+                              
                                 if (skyboxMaterial != null)
                                 {
-                                    // Switch to panoramic shader
+                                 
                                     skyboxMaterial.shader = Shader.Find("Skybox/Panoramic");
                                     skyboxMaterial.SetTexture("_MainTex", properlySizedTex);
                                     DynamicGI.UpdateEnvironment();
@@ -468,7 +524,7 @@ public class UnityAndGeminiV3: MonoBehaviour
 
     private IEnumerator SendPromptMediaRequestToGemini(string promptText, string mediaPath)
     {
-        // Read video file and convert to base64
+       
         byte[] mediaBytes = File.ReadAllBytes(mediaPath);
         string base64Media = System.Convert.ToBase64String(mediaBytes);
 
@@ -498,11 +554,9 @@ public class UnityAndGeminiV3: MonoBehaviour
         }}";
 
 
-        // Serialize the request into JSON
-        // string jsonData = JsonUtility.ToJson(jsonBody);
+   
         Debug.Log("Sending JSON: " + jsonBody); // For debugging
 
-        // byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
 
         byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonBody);
 

@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 [Serializable]
 public class RecognitionConfig
@@ -40,7 +41,12 @@ public class SpeechToText : MonoBehaviour
     [Tooltip("Hz")]
     public int sampleRate = 16000;
     [Tooltip("Seconds")]
-    public float recordSeconds = 10f;
+
+    private bool isRecording = false;
+    private bool stopRequested = false;
+
+    public float recordSeconds = 4f;
+    public Button recordButton;
 
     [Header("Gemini script")]
     public UnityAndGeminiV3 geminiManager;
@@ -54,6 +60,7 @@ public class SpeechToText : MonoBehaviour
                             Mathf.CeilToInt(recordSeconds),
                             sampleRate);
         yield return new WaitForSeconds(recordSeconds);
+
         Microphone.End(null);
 
         // 2) Encode to WAV PCM16 + base64
@@ -83,19 +90,19 @@ public class SpeechToText : MonoBehaviour
         www.SetRequestHeader("Content-Type", "application/json");
         yield return www.SendWebRequest();
 
-        //  ⇒ if it still errors, we’ll see Google’s message
+  
         if (www.result != UnityWebRequest.Result.Success)
         {
             Debug.LogError($"STT Error: {www.error}\nBody: {www.downloadHandler.text}");
             yield break;
         }
 
-        // 5) Parse response
+    
         var resp = JsonUtility.FromJson<GoogleResponse>(www.downloadHandler.text);
         if (resp.results?.Length > 0 && resp.results[0].alternatives?.Length > 0)
         {
             string transcript = resp.results[0].alternatives[0].transcript;
-            Debug.Log("🗣️ Heard: " + transcript);
+            Debug.Log("Heard: " + transcript);
             geminiManager.SendUserMessage(transcript);
         }
         else
@@ -106,11 +113,11 @@ public class SpeechToText : MonoBehaviour
 
     private byte[] ConvertClipToWav(AudioClip clip)
     {
-        // pull samples
+       
         var samples = new float[clip.samples * clip.channels];
         clip.GetData(samples, 0);
 
-        // float → 16-bit PCM
+       
         var intData = new Int16[samples.Length];
         var bytesData = new byte[samples.Length * 2];
         float rescale = 32767f;
@@ -120,7 +127,7 @@ public class SpeechToText : MonoBehaviour
             BitConverter.GetBytes(intData[i]).CopyTo(bytesData, i * 2);
         }
 
-        // write RIFF/WAV header correctly
+      
         using var ms = new System.IO.MemoryStream();
         using var bw = new System.IO.BinaryWriter(ms);
 
@@ -133,13 +140,13 @@ public class SpeechToText : MonoBehaviour
         bw.Write("WAVE".ToCharArray());
 
         bw.Write("fmt ".ToCharArray());
-        bw.Write(16);                // fmt sub-chunk size
-        bw.Write((short)1);          // PCM
+        bw.Write(16);             
+        bw.Write((short)1);      
         bw.Write((short)ch);
         bw.Write(hz);
         bw.Write(br);
         bw.Write((short)(ch * 2));
-        bw.Write((short)16);         // bits per sample
+        bw.Write((short)16);       
 
         bw.Write("data".ToCharArray());
         bw.Write(bytesData.Length);
