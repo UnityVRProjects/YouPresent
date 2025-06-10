@@ -32,6 +32,7 @@ public class TimeManager : MonoBehaviour
         timeDisengagedHands = HANDS_DOWN_LIMIT;
         if (warningText != null)
             warningText.enabled = false;
+        StartTime();
     }
 
     void Update()

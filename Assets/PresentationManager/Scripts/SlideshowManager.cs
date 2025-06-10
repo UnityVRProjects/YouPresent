@@ -18,8 +18,12 @@ public class SlideshowManager : MonoBehaviour
         free,
         practice
     }
+
+    bool[] settings = { false, false, false, false };
+    // [record, eye contact, posture, slide pacing]
     mode currMode = mode.menu;
-    mode selectedMode;
+    public mode selectedMode = mode.menu;
+    public static float[] myTimers = { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
 
     void Start()
     {
@@ -150,4 +154,34 @@ public class SlideshowManager : MonoBehaviour
     {
         return slideTimers;
     }
+
+    public void ToggleTrainingSettings(int setting)
+    {
+            settings[setting] = !settings[setting];
+    }
+
+    public void setMode(string modeSelected)
+    {
+        if (modeSelected == "training")
+        {
+            selectedMode = mode.training;
+        }
+
+        else
+        {
+            selectedMode = mode.free;
+        }
+    }
+
+    public float getMyTimer(int index)
+    {
+        return myTimers[index]; 
+    }
+
+    public void setMyTimer(int index, float time)
+    {
+        myTimers[index] = time;
+        return;
+    }
+
 }
