@@ -238,7 +238,7 @@ public class UnityAndGeminiV3: MonoBehaviour
         float[] slideTimes = SlidesManager.getSlideTime();
         string promptText = "";
 
-        promptText += "Using the inputted data regarding the user's performance while public speaking: please evaluate their performance based off of the following criteria: Timing, Presentation, and Volume. " +
+        promptText += "Using the inputted data regarding the user's performance while public speaking: please evaluate their performance based off of the following criteria: slide time. " +
             "For Timing, here is the time they spent on each slide: ";
 
         for (int i = 0; i < slideTimes.Length; i++){
@@ -280,6 +280,7 @@ public class UnityAndGeminiV3: MonoBehaviour
                 {
                     //This is the response to your request
                     string text = response.candidates[0].content.parts[0].text;
+                    TranscriptionManager.SynthesizeSpeech(text);
                     Debug.Log(text);
                 }
                 else

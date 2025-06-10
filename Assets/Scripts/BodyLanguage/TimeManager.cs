@@ -32,7 +32,6 @@ public class TimeManager : MonoBehaviour
         timeDisengagedHands = HANDS_DOWN_LIMIT;
         if (warningText != null)
             warningText.enabled = false;
-        StartTime();
     }
 
     void Update()
@@ -151,6 +150,7 @@ public class TimeManager : MonoBehaviour
 
     public void StartTime()
     {
+        ResetTime();
         hasStarted = true;
     }
 
@@ -173,7 +173,6 @@ public class TimeManager : MonoBehaviour
     public void StopTime()
     {
         PauseTime();
-        ResetTime();
     }
     #endregion
 }

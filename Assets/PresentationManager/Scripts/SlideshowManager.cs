@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.UI;
@@ -5,11 +6,17 @@ using UnityEngine.UI;
 public class SlideshowManager : MonoBehaviour
 {
     [SerializeField] Canvas slideshow;
+    [SerializeField] TimeManager timeManager;
+    [SerializeField] LewisManager lewisManager;
+    [SerializeField] AudienceManager audienceManager;
+    [SerializeField] UnityAndGeminiV3 avatar;
+    [SerializeField] SpeechToText speechToText;
     Image[] slides;
     float[] slideTimers;
     Image currSlide;
     int currIndex = 0;
     bool isPresenting = false;
+
 
     public enum mode
     {
@@ -35,7 +42,7 @@ public class SlideshowManager : MonoBehaviour
         }
 
         slideTimers = new float[slides.Length];
-        for(int x = 0; x < slides.Length; x++)
+        for (int x = 0; x < slides.Length; x++)
         {
             slideTimers[x] = 0f;
         }
@@ -63,33 +70,25 @@ public class SlideshowManager : MonoBehaviour
             slideTimers[currIndex] += Time.deltaTime;
         }
 
-        // Select modes
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            selectedMode = mode.training;
-            Debug.Log("TRAINING mode selected");
+            avatar.SendChat();
         }
 
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.W))
         {
-            selectedMode = mode.free;
-            Debug.Log("FREE mode selected");
+            speechToText.StartTranscription();
         }
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            selectedMode = mode.practice;
-            Debug.Log("PRACTICE mode selected");
+            TalkAvatar();
         }
 
-        if (Input.GetKeyDown(KeyCode.M) && !isPresenting)
+        if (Input.GetKeyDown(KeyCode.L))
         {
-            currMode = selectedMode;
-            Debug.Log(currMode + " was confirmed.");
+            ExitAvatar();
         }
-
-
-
     }
 
     public void StartPresentation()
@@ -102,6 +101,8 @@ public class SlideshowManager : MonoBehaviour
         {
             slideTimers[x] = 0f;
         }
+        timeManager.StartTime();
+        lewisManager.Audience();
 
     }
 
@@ -109,7 +110,7 @@ public class SlideshowManager : MonoBehaviour
     {
         if (isPresenting)
         {
-            if(currIndex < slides.Length - 1)
+            if (currIndex < slides.Length - 1)
             {
                 currSlide.enabled = false;
                 currIndex++;
@@ -141,6 +142,8 @@ public class SlideshowManager : MonoBehaviour
         currIndex = 0;
         currSlide = null;
 
+        audienceManager.StartApplause();
+
         for (int x = 0; x < slides.Length; x++)
         {
             float time = slideTimers[x];
@@ -148,6 +151,16 @@ public class SlideshowManager : MonoBehaviour
             int seconds = Mathf.FloorToInt(time % 60);
             Debug.Log("Slide " + x + " time is: " + minutes + "m and " + seconds + " seconds.");
         }
+        timeManager.StopTime();
+        float applauseTime = 0f;
+        while (applauseTime < 8f)
+        {
+            applauseTime += Time.deltaTime;
+        }
+        audienceManager.EndApplause();
+        lewisManager.Stage();
+
+
     }
 
     public float[] getSlideTime()
@@ -157,7 +170,7 @@ public class SlideshowManager : MonoBehaviour
 
     public void ToggleTrainingSettings(int setting)
     {
-            settings[setting] = !settings[setting];
+        settings[setting] = !settings[setting];
     }
 
     public void setMode(string modeSelected)
@@ -175,13 +188,24 @@ public class SlideshowManager : MonoBehaviour
 
     public float getMyTimer(int index)
     {
-        return myTimers[index]; 
+        return myTimers[index];
     }
 
     public void setMyTimer(int index, float time)
     {
         myTimers[index] = time;
         return;
+    }
+
+    public void TalkAvatar()
+    {
+        lewisManager.StartTalk();
+        avatar.runGemini();
+    }
+
+    public void ExitAvatar()
+    {
+        lewisManager.StopTalk();
     }
 
 }
