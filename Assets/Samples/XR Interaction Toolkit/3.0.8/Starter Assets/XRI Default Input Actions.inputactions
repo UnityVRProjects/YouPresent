@@ -3333,6 +3333,37 @@
                     "isPartOfComposite": true
                 }
             ]
+<<<<<<< HEAD
+=======
+        },
+        {
+            "name": "Presentation",
+            "id": "2ec72e9f-7201-474a-ba72-54eecdca92bd",
+            "actions": [
+                {
+                    "name": "Menu Select",
+                    "type": "Button",
+                    "id": "e1a4ae64-d201-4c53-8dc8-c1b5192e7f6c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fdc2ccfc-8180-4f58-93f7-37b123522eb0",
+                    "path": "<XRController>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+>>>>>>> main
         }
     ],
     "controlSchemes": []

@@ -2,22 +2,27 @@ using UnityEngine;
 
 public class AudienceManager : MonoBehaviour
 {
+    ApplauseController[] applauseControllers;
     void Start()
     {
-        
+        applauseControllers = GetComponentsInChildren<ApplauseController>();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartApplause()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ApplauseController[] applauseControllers = GetComponentsInChildren<ApplauseController>();
 
-            foreach (ApplauseController controller in applauseControllers)
-            {
-                controller.Applause();
-            }
+        foreach (ApplauseController controller in applauseControllers)
+        {
+            controller.Applause();
+        }
+    }
+
+    public void EndApplause()
+    {
+        foreach (ApplauseController controller in applauseControllers)
+        {
+            controller.StopApplause();
         }
     }
 }

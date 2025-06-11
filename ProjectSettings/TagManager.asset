@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
+<<<<<<< HEAD
   tags: []
+=======
+  tags:
+  - Projector
+  - Audience
+>>>>>>> main
   layers:
   - Default
   - TransparentFX
@@ -11,7 +17,7 @@ TagManager:
   - LocalPlayer
   - Water
   - UI
-  - 
+  - Gazeable
   - 
   - 
   - 
