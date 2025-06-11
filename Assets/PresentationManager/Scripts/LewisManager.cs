@@ -14,7 +14,7 @@ public class LewisManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Stage()
@@ -40,5 +40,18 @@ public class LewisManager : MonoBehaviour
     public void StopTalk()
     {
         animator.SetBool("Talk", false);
+    }
+
+    public void Applause()
+    {
+        animator.SetBool("Standing", false);
+        animator.SetBool("Talk", false);
+        animator.SetBool("Clap", true);
+    }
+
+    public void EndApplause()
+    {
+        animator.SetBool("Clap", false);
+        animator.SetBool("Standing", true);
     }
 }

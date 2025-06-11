@@ -8,8 +8,8 @@ public class SlideCounter : MonoBehaviour
     public Button increment;
     public Button decrement;
     [SerializeField] SlideshowManager slideshowManager;
-    [SerializeField] static int slide;
-    public float count;
+    [SerializeField] int slide;
+    float count;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

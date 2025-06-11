@@ -18,6 +18,9 @@ public class SlideshowManager : MonoBehaviour
     Image currSlide;
     int currIndex = 0;
     bool isPresenting = false;
+    bool isEnded = false;
+    bool audienceStop = false;
+    float applauseTime = 0f;
 
 
     public enum mode
@@ -54,43 +57,26 @@ public class SlideshowManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            NextSlide();
-        }
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            StartPresentation();
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            PrevSlide();
-        }
-
         if (isPresenting)
         {
             slideTimers[currIndex] += Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (isEnded)
         {
-            avatar.SendChat();
+            applauseTime += Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (applauseTime > 8f)
         {
-            speechToText.StartTranscription();
-        }
+            audienceManager.EndApplause();
+            lewisManager.EndApplause();
+            lewisManager.Stage();
 
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            TalkAvatar();
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            ExitAvatar();
+            MainMenu.SetActive(true);
+            PresentingMenu.SetActive(false);
+            isEnded = false;
+            applauseTime = 0f;
         }
     }
 
@@ -106,7 +92,6 @@ public class SlideshowManager : MonoBehaviour
         }
         timeManager.StartTime();
         lewisManager.Audience();
-
     }
 
     public void NextSlide()
@@ -146,6 +131,7 @@ public class SlideshowManager : MonoBehaviour
         currSlide = null;
 
         audienceManager.StartApplause();
+        lewisManager.Applause();
 
         for (int x = 0; x < slides.Length; x++)
         {
@@ -155,16 +141,7 @@ public class SlideshowManager : MonoBehaviour
             Debug.Log("Slide " + x + " time is: " + minutes + "m and " + seconds + " seconds.");
         }
         timeManager.StopTime();
-        float applauseTime = 0f;
-        while (applauseTime < 8f)
-        {
-            applauseTime += Time.deltaTime;
-        }
-        audienceManager.EndApplause();
-        lewisManager.Stage();
-
-        MainMenu.SetActive(true);
-        PresentingMenu.SetActive(false);
+        isEnded = true;
     }
 
     public float[] getSlideTime()

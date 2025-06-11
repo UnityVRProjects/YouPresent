@@ -243,8 +243,8 @@ public class UnityAndGeminiV3: MonoBehaviour
 
         promptText += "For Presentation, here are multiple time values regarding user's eye contact: " + TimeManagerDataConcatenate() + " elapsedTime is time spent total during the presentation, audienceTime is time spent total looking at the audience, projectorTime is time spent looking at the projector, lookingAtNothing_Num is the amount of times the user looks at nothing for more than 6 seconds, and disengagedHands_Num is the number of times the user did nothing with their hands during presentation for 10+ seconds straight";
             
-           promptText += "Please proceed and go over each of the criteria separately and explain what they did well, and what could be improved, if anything. " +
-            "Finally, at the end of it ask them if they have any questions about your evaluation or if they'd like any advice. Please make your response short to about 3 sentences per section.";
+           promptText += "Please proceed and go over each of the criteria separately and explain what they did well, but do not type any symbols. please say what could be improved, if anything. " +
+            "Finally, at the end of it ask them if they have any questions about your evaluation or if they'd like any advice. Keep your response short.";
 
         string url = $"{apiEndpoint}?key={apiKey}";
 
