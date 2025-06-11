@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Projector
   - Audience
+  - TestRecorder
+
   layers:
   - Default
   - TransparentFX
