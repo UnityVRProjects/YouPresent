@@ -4,7 +4,10 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - Projector
+  - Audience
   - TestRecorder
+
   layers:
   - Default
   - TransparentFX
@@ -12,7 +15,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Gazeable
   - 
   - 
   - 

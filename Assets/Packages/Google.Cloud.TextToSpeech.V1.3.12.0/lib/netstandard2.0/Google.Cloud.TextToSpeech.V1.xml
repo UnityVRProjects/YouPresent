@@ -1,0 +1,2050 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Google.Cloud.TextToSpeech.V1</name>
+    </assembly>
+    <members>
+        <member name="T:Google.Cloud.TextToSpeech.V1.CloudTtsReflection">
+            <summary>Holder for reflection information generated from google/cloud/texttospeech/v1/cloud_tts.proto</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.CloudTtsReflection.Descriptor">
+            <summary>File descriptor for google/cloud/texttospeech/v1/cloud_tts.proto</summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.SsmlVoiceGender">
+            <summary>
+            Gender of the voice as described in
+            [SSML voice element](https://www.w3.org/TR/speech-synthesis11/#edef_voice).
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SsmlVoiceGender.Unspecified">
+            <summary>
+            An unspecified gender.
+            In VoiceSelectionParams, this means that the client doesn't care which
+            gender the selected voice will have. In the Voice field of
+            ListVoicesResponse, this may mean that the voice doesn't fit any of the
+            other categories in this enum, or that the gender of the voice isn't known.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SsmlVoiceGender.Male">
+            <summary>
+            A male voice.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SsmlVoiceGender.Female">
+            <summary>
+            A female voice.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SsmlVoiceGender.Neutral">
+            <summary>
+            A gender-neutral voice. This voice is not yet supported.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.AudioEncoding">
+            <summary>
+            Configuration to set up audio encoder. The encoding determines the output
+            audio format that we'd like.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.AudioEncoding.Unspecified">
+            <summary>
+            Not specified. Will return result
+            [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT].
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.AudioEncoding.Linear16">
+            <summary>
+            Uncompressed 16-bit signed little-endian samples (Linear PCM).
+            Audio content returned as LINEAR16 also contains a WAV header.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.AudioEncoding.Mp3">
+            <summary>
+            MP3 audio at 32kbps.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.AudioEncoding.OggOpus">
+            <summary>
+            Opus encoded audio wrapped in an ogg container. The result is a
+            file which can be played natively on Android, and in browsers (at least
+            Chrome and Firefox). The quality of the encoding is considerably higher
+            than MP3 while using approximately the same bitrate.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.AudioEncoding.Mulaw">
+            <summary>
+            8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law.
+            Audio content returned as MULAW also contains a WAV header.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.AudioEncoding.Alaw">
+            <summary>
+            8-bit samples that compand 14-bit audio samples using G.711 PCMU/A-law.
+            Audio content returned as ALAW also contains a WAV header.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.AudioEncoding.Pcm">
+            <summary>
+            Uncompressed 16-bit signed little-endian samples (Linear PCM).
+            Note that as opposed to LINEAR16, audio won't be wrapped in a WAV (or
+            any other) header.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.ListVoicesRequest">
+            <summary>
+            The top-level message sent by the client for the `ListVoices` method.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.ListVoicesRequest.LanguageCodeFieldNumber">
+            <summary>Field number for the "language_code" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.ListVoicesRequest.LanguageCode">
+            <summary>
+            Optional. Recommended.
+            [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
+            If not specified, the API will return all supported voices.
+            If specified, the ListVoices call will only return voices that can be used
+            to synthesize this language_code. For example, if you specify `"en-NZ"`,
+            all `"en-NZ"` voices will be returned. If you specify `"no"`, both
+            `"no-\*"` (Norwegian) and `"nb-\*"` (Norwegian Bokmal) voices will be
+            returned.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.ListVoicesResponse">
+            <summary>
+            The message returned to the client by the `ListVoices` method.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.ListVoicesResponse.VoicesFieldNumber">
+            <summary>Field number for the "voices" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.ListVoicesResponse.Voices">
+            <summary>
+            The list of voices.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.Voice">
+            <summary>
+            Description of a voice supported by the TTS service.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.Voice.LanguageCodesFieldNumber">
+            <summary>Field number for the "language_codes" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.Voice.LanguageCodes">
+            <summary>
+            The languages that this voice supports, expressed as
+            [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags (e.g.
+            "en-US", "es-419", "cmn-tw").
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.Voice.NameFieldNumber">
+            <summary>Field number for the "name" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.Voice.Name">
+            <summary>
+            The name of this voice.  Each distinct voice has a unique name.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.Voice.SsmlGenderFieldNumber">
+            <summary>Field number for the "ssml_gender" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.Voice.SsmlGender">
+            <summary>
+            The gender of this voice.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.Voice.NaturalSampleRateHertzFieldNumber">
+            <summary>Field number for the "natural_sample_rate_hertz" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.Voice.NaturalSampleRateHertz">
+            <summary>
+            The natural sample rate (in hertz) for this voice.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.AdvancedVoiceOptions">
+            <summary>
+            Used for advanced voice options.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.AdvancedVoiceOptions.LowLatencyJourneySynthesisFieldNumber">
+            <summary>Field number for the "low_latency_journey_synthesis" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.AdvancedVoiceOptions.LowLatencyJourneySynthesis">
+            <summary>
+            Only for Journey voices. If false, the synthesis is context aware
+            and has a higher latency.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.AdvancedVoiceOptions.HasLowLatencyJourneySynthesis">
+            <summary>Gets whether the "low_latency_journey_synthesis" field is set</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.AdvancedVoiceOptions.ClearLowLatencyJourneySynthesis">
+            <summary>Clears the value of the "low_latency_journey_synthesis" field</summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.SynthesizeSpeechRequest">
+            <summary>
+            The top-level message sent by the client for the `SynthesizeSpeech` method.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SynthesizeSpeechRequest.InputFieldNumber">
+            <summary>Field number for the "input" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesizeSpeechRequest.Input">
+            <summary>
+            Required. The Synthesizer requires either plain text or SSML as input.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SynthesizeSpeechRequest.VoiceFieldNumber">
+            <summary>Field number for the "voice" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesizeSpeechRequest.Voice">
+            <summary>
+            Required. The desired voice of the synthesized audio.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SynthesizeSpeechRequest.AudioConfigFieldNumber">
+            <summary>Field number for the "audio_config" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesizeSpeechRequest.AudioConfig">
+            <summary>
+            Required. The configuration of the synthesized audio.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SynthesizeSpeechRequest.AdvancedVoiceOptionsFieldNumber">
+            <summary>Field number for the "advanced_voice_options" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesizeSpeechRequest.AdvancedVoiceOptions">
+            <summary>
+            Advanced voice options.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.CustomPronunciationParams">
+            <summary>
+            Pronunciation customization for a phrase.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.CustomPronunciationParams.PhraseFieldNumber">
+            <summary>Field number for the "phrase" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.CustomPronunciationParams.Phrase">
+            <summary>
+            The phrase to which the customization is applied.
+            The phrase can be multiple words, such as proper nouns, but shouldn't span
+            the length of the sentence.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.CustomPronunciationParams.HasPhrase">
+            <summary>Gets whether the "phrase" field is set</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.CustomPronunciationParams.ClearPhrase">
+            <summary>Clears the value of the "phrase" field</summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.CustomPronunciationParams.PhoneticEncodingFieldNumber">
+            <summary>Field number for the "phonetic_encoding" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.CustomPronunciationParams.PhoneticEncoding">
+            <summary>
+            The phonetic encoding of the phrase.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.CustomPronunciationParams.HasPhoneticEncoding">
+            <summary>Gets whether the "phonetic_encoding" field is set</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.CustomPronunciationParams.ClearPhoneticEncoding">
+            <summary>Clears the value of the "phonetic_encoding" field</summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.CustomPronunciationParams.PronunciationFieldNumber">
+            <summary>Field number for the "pronunciation" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.CustomPronunciationParams.Pronunciation">
+            <summary>
+            The pronunciation of the phrase. This must be in the phonetic encoding
+            specified above.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.CustomPronunciationParams.HasPronunciation">
+            <summary>Gets whether the "pronunciation" field is set</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.CustomPronunciationParams.ClearPronunciation">
+            <summary>Clears the value of the "pronunciation" field</summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.CustomPronunciationParams.Types">
+            <summary>Container for nested types declared in the CustomPronunciationParams message type.</summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.CustomPronunciationParams.Types.PhoneticEncoding">
+            <summary>
+            The phonetic encoding of the phrase.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.CustomPronunciationParams.Types.PhoneticEncoding.Unspecified">
+            <summary>
+            Not specified.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.CustomPronunciationParams.Types.PhoneticEncoding.Ipa">
+            <summary>
+            IPA, such as apple -> ˈæpəl.
+            https://en.wikipedia.org/wiki/International_Phonetic_Alphabet
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.CustomPronunciationParams.Types.PhoneticEncoding.XSampa">
+            <summary>
+            X-SAMPA, such as apple -> "{p@l".
+            https://en.wikipedia.org/wiki/X-SAMPA
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.CustomPronunciationParams.Types.PhoneticEncoding.JapaneseYomigana">
+             <summary>
+             For reading-to-pron conversion to work well, the `pronunciation` field
+              should only contain Kanji, Hiragana, and Katakana.
+            
+             The pronunciation can also contain pitch accents.
+             The start of a pitch phrase is specified with `^` and the down-pitch
+             position is specified with `!`, for example:
+            
+                 phrase:端  pronunciation:^はし
+                 phrase:箸  pronunciation:^は!し
+                 phrase:橋  pronunciation:^はし!
+            
+             We currently only support the Tokyo dialect, which allows at most one
+             down-pitch per phrase (i.e. at most one `!` between `^`).
+             </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.CustomPronunciationParams.Types.PhoneticEncoding.Pinyin">
+             <summary>
+             Used to specify pronunciations for Mandarin words. See
+             https://en.wikipedia.org/wiki/Pinyin.
+            
+             For example: 朝阳, the pronunciation is "chao2 yang2". The number
+             represents the tone, and there is a space between syllables. Neutral
+             tones are represented by 5, for example 孩子 "hai2 zi5".
+             </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.CustomPronunciations">
+            <summary>
+            A collection of pronunciation customizations.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.CustomPronunciations.PronunciationsFieldNumber">
+            <summary>Field number for the "pronunciations" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.CustomPronunciations.Pronunciations">
+            <summary>
+            The pronunciation customizations are applied.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.MultiSpeakerMarkup">
+            <summary>
+            A collection of turns for multi-speaker synthesis.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.MultiSpeakerMarkup.TurnsFieldNumber">
+            <summary>Field number for the "turns" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.MultiSpeakerMarkup.Turns">
+            <summary>
+            Required. Speaker turns.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.MultiSpeakerMarkup.Types">
+            <summary>Container for nested types declared in the MultiSpeakerMarkup message type.</summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.MultiSpeakerMarkup.Types.Turn">
+            <summary>
+            A multi-speaker turn.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.MultiSpeakerMarkup.Types.Turn.SpeakerFieldNumber">
+            <summary>Field number for the "speaker" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.MultiSpeakerMarkup.Types.Turn.Speaker">
+            <summary>
+            Required. The speaker of the turn, for example, 'O' or 'Q'. Please refer
+            to documentation for available speakers.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.MultiSpeakerMarkup.Types.Turn.TextFieldNumber">
+            <summary>Field number for the "text" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.MultiSpeakerMarkup.Types.Turn.Text">
+            <summary>
+            Required. The text to speak.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.SynthesisInput">
+            <summary>
+            Contains text input to be synthesized. Either `text` or `ssml` must be
+            supplied. Supplying both or neither returns
+            [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT]. The
+            input size is limited to 5000 bytes.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SynthesisInput.TextFieldNumber">
+            <summary>Field number for the "text" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesisInput.Text">
+            <summary>
+            The raw text to be synthesized.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesisInput.HasText">
+            <summary>Gets whether the "text" field is set</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.SynthesisInput.ClearText">
+            <summary> Clears the value of the oneof if it's currently set to "text" </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SynthesisInput.MarkupFieldNumber">
+            <summary>Field number for the "markup" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesisInput.Markup">
+            <summary>
+            Markup for HD voices specifically. This field may not be used with any
+            other voices.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesisInput.HasMarkup">
+            <summary>Gets whether the "markup" field is set</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.SynthesisInput.ClearMarkup">
+            <summary> Clears the value of the oneof if it's currently set to "markup" </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SynthesisInput.SsmlFieldNumber">
+            <summary>Field number for the "ssml" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesisInput.Ssml">
+            <summary>
+            The SSML document to be synthesized. The SSML document must be valid
+            and well-formed. Otherwise the RPC will fail and return
+            [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT]. For
+            more information, see
+            [SSML](https://cloud.google.com/text-to-speech/docs/ssml).
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesisInput.HasSsml">
+            <summary>Gets whether the "ssml" field is set</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.SynthesisInput.ClearSsml">
+            <summary> Clears the value of the oneof if it's currently set to "ssml" </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SynthesisInput.MultiSpeakerMarkupFieldNumber">
+            <summary>Field number for the "multi_speaker_markup" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesisInput.MultiSpeakerMarkup">
+            <summary>
+            The multi-speaker input to be synthesized. Only applicable for
+            multi-speaker synthesis.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SynthesisInput.CustomPronunciationsFieldNumber">
+            <summary>Field number for the "custom_pronunciations" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesisInput.CustomPronunciations">
+             <summary>
+             Optional. The pronunciation customizations are applied to the input. If
+             this is set, the input is synthesized using the given pronunciation
+             customizations.
+            
+             The initial support is for en-us, with plans to expand to other locales in
+             the future. Instant Clone voices aren't supported.
+            
+             In order to customize the pronunciation of a phrase, there must be an exact
+             match of the phrase in the input types. If using SSML, the phrase must not
+             be inside a phoneme tag.
+             </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.SynthesisInput.InputSourceOneofCase">
+            <summary>Enum of possible cases for the "input_source" oneof.</summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.VoiceSelectionParams">
+            <summary>
+            Description of which voice to use for a synthesis request.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.VoiceSelectionParams.LanguageCodeFieldNumber">
+            <summary>Field number for the "language_code" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.VoiceSelectionParams.LanguageCode">
+            <summary>
+            Required. The language (and potentially also the region) of the voice
+            expressed as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+            language tag, e.g. "en-US". This should not include a script tag (e.g. use
+            "cmn-cn" rather than "cmn-Hant-cn"), because the script will be inferred
+            from the input provided in the SynthesisInput.  The TTS service
+            will use this parameter to help choose an appropriate voice.  Note that
+            the TTS service may choose a voice with a slightly different language code
+            than the one selected; it may substitute a different region
+            (e.g. using en-US rather than en-CA if there isn't a Canadian voice
+            available), or even a different language, e.g. using "nb" (Norwegian
+            Bokmal) instead of "no" (Norwegian)".
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.VoiceSelectionParams.NameFieldNumber">
+            <summary>Field number for the "name" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.VoiceSelectionParams.Name">
+            <summary>
+            The name of the voice. If both the name and the gender are not set,
+            the service will choose a voice based on the other parameters such as
+            language_code.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.VoiceSelectionParams.SsmlGenderFieldNumber">
+            <summary>Field number for the "ssml_gender" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.VoiceSelectionParams.SsmlGender">
+            <summary>
+            The preferred gender of the voice. If not set, the service will
+            choose a voice based on the other parameters such as language_code and
+            name. Note that this is only a preference, not requirement; if a
+            voice of the appropriate gender is not available, the synthesizer should
+            substitute a voice with a different gender rather than failing the request.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.VoiceSelectionParams.CustomVoiceFieldNumber">
+            <summary>Field number for the "custom_voice" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.VoiceSelectionParams.CustomVoice">
+            <summary>
+            The configuration for a custom voice. If [CustomVoiceParams.model] is set,
+            the service will choose the custom voice matching the specified
+            configuration.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.VoiceSelectionParams.VoiceCloneFieldNumber">
+            <summary>Field number for the "voice_clone" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.VoiceSelectionParams.VoiceClone">
+            <summary>
+            Optional. The configuration for a voice clone. If
+            [VoiceCloneParams.voice_clone_key] is set, the service chooses the voice
+            clone matching the specified configuration.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.AudioConfig">
+            <summary>
+            Description of audio data to be synthesized.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.AudioConfig.AudioEncodingFieldNumber">
+            <summary>Field number for the "audio_encoding" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.AudioConfig.AudioEncoding">
+            <summary>
+            Required. The format of the audio byte stream.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.AudioConfig.SpeakingRateFieldNumber">
+            <summary>Field number for the "speaking_rate" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.AudioConfig.SpeakingRate">
+            <summary>
+            Optional. Input only. Speaking rate/speed, in the range [0.25, 2.0]. 1.0 is
+            the normal native speed supported by the specific voice. 2.0 is twice as
+            fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0
+            speed. Any other values &lt; 0.25 or > 2.0 will return an error.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.AudioConfig.PitchFieldNumber">
+            <summary>Field number for the "pitch" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.AudioConfig.Pitch">
+            <summary>
+            Optional. Input only. Speaking pitch, in the range [-20.0, 20.0]. 20 means
+            increase 20 semitones from the original pitch. -20 means decrease 20
+            semitones from the original pitch.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.AudioConfig.VolumeGainDbFieldNumber">
+            <summary>Field number for the "volume_gain_db" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.AudioConfig.VolumeGainDb">
+            <summary>
+            Optional. Input only. Volume gain (in dB) of the normal native volume
+            supported by the specific voice, in the range [-96.0, 16.0]. If unset, or
+            set to a value of 0.0 (dB), will play at normal native signal amplitude. A
+            value of -6.0 (dB) will play at approximately half the amplitude of the
+            normal native signal amplitude. A value of +6.0 (dB) will play at
+            approximately twice the amplitude of the normal native signal amplitude.
+            Strongly recommend not to exceed +10 (dB) as there's usually no effective
+            increase in loudness for any value greater than that.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.AudioConfig.SampleRateHertzFieldNumber">
+            <summary>Field number for the "sample_rate_hertz" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.AudioConfig.SampleRateHertz">
+            <summary>
+            Optional. The synthesis sample rate (in hertz) for this audio. When this is
+            specified in SynthesizeSpeechRequest, if this is different from the voice's
+            natural sample rate, then the synthesizer will honor this request by
+            converting to the desired sample rate (which might result in worse audio
+            quality), unless the specified sample rate is not supported for the
+            encoding chosen, in which case it will fail the request and return
+            [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT].
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.AudioConfig.EffectsProfileIdFieldNumber">
+            <summary>Field number for the "effects_profile_id" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.AudioConfig.EffectsProfileId">
+            <summary>
+            Optional. Input only. An identifier which selects 'audio effects' profiles
+            that are applied on (post synthesized) text to speech. Effects are applied
+            on top of each other in the order they are given. See
+            [audio
+            profiles](https://cloud.google.com/text-to-speech/docs/audio-profiles) for
+            current supported profile ids.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.CustomVoiceParams">
+            <summary>
+            Description of the custom voice to be synthesized.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.CustomVoiceParams.ModelFieldNumber">
+            <summary>Field number for the "model" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.CustomVoiceParams.Model">
+            <summary>
+            Required. The name of the AutoML model that synthesizes the custom voice.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.CustomVoiceParams.ReportedUsageFieldNumber">
+            <summary>Field number for the "reported_usage" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.CustomVoiceParams.ReportedUsage">
+            <summary>
+            Optional. Deprecated. The usage of the synthesized audio to be reported.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.CustomVoiceParams.Types">
+            <summary>Container for nested types declared in the CustomVoiceParams message type.</summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.CustomVoiceParams.Types.ReportedUsage">
+            <summary>
+            Deprecated. The usage of the synthesized audio. Usage does not affect
+            billing.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.CustomVoiceParams.Types.ReportedUsage.Unspecified">
+            <summary>
+            Request with reported usage unspecified will be rejected.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.CustomVoiceParams.Types.ReportedUsage.Realtime">
+            <summary>
+            For scenarios where the synthesized audio is not downloadable and can
+            only be used once. For example, real-time request in IVR system.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.CustomVoiceParams.Types.ReportedUsage.Offline">
+            <summary>
+            For scenarios where the synthesized audio is downloadable and can be
+            reused. For example, the synthesized audio is downloaded, stored in
+            customer service system and played repeatedly.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.CustomVoiceParams.ModelAsModelName">
+            <summary><see cref="T:Google.Cloud.TextToSpeech.V1.ModelName"/>-typed view over the <see cref="P:Google.Cloud.TextToSpeech.V1.CustomVoiceParams.Model"/> resource name property.</summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.VoiceCloneParams">
+            <summary>
+            The configuration of Voice Clone feature.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.VoiceCloneParams.VoiceCloningKeyFieldNumber">
+            <summary>Field number for the "voice_cloning_key" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.VoiceCloneParams.VoiceCloningKey">
+            <summary>
+            Required. Created by GenerateVoiceCloningKey.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.SynthesizeSpeechResponse">
+            <summary>
+            The message returned to the client by the `SynthesizeSpeech` method.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SynthesizeSpeechResponse.AudioContentFieldNumber">
+            <summary>Field number for the "audio_content" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesizeSpeechResponse.AudioContent">
+            <summary>
+            The audio data bytes encoded as specified in the request, including the
+            header for encodings that are wrapped in containers (e.g. MP3, OGG_OPUS).
+            For LINEAR16 audio, we include the WAV header. Note: as
+            with all bytes fields, protobuffers use a pure binary representation,
+            whereas JSON representations use base64.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.StreamingAudioConfig">
+            <summary>
+            Description of the desired output audio data.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.StreamingAudioConfig.AudioEncodingFieldNumber">
+            <summary>Field number for the "audio_encoding" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.StreamingAudioConfig.AudioEncoding">
+            <summary>
+            Required. The format of the audio byte stream.
+            Streaming supports PCM, ALAW, MULAW and OGG_OPUS. All other encodings
+            return an error.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.StreamingAudioConfig.SampleRateHertzFieldNumber">
+            <summary>Field number for the "sample_rate_hertz" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.StreamingAudioConfig.SampleRateHertz">
+            <summary>
+            Optional. The synthesis sample rate (in hertz) for this audio.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.StreamingAudioConfig.SpeakingRateFieldNumber">
+            <summary>Field number for the "speaking_rate" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.StreamingAudioConfig.SpeakingRate">
+            <summary>
+            Optional. Input only. Speaking rate/speed, in the range [0.25, 2.0]. 1.0 is
+            the normal native speed supported by the specific voice. 2.0 is twice as
+            fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0
+            speed. Any other values &lt; 0.25 or > 2.0 will return an error.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.StreamingSynthesizeConfig">
+            <summary>
+            Provides configuration information for the StreamingSynthesize request.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.StreamingSynthesizeConfig.VoiceFieldNumber">
+            <summary>Field number for the "voice" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.StreamingSynthesizeConfig.Voice">
+            <summary>
+            Required. The desired voice of the synthesized audio.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.StreamingSynthesizeConfig.StreamingAudioConfigFieldNumber">
+            <summary>Field number for the "streaming_audio_config" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.StreamingSynthesizeConfig.StreamingAudioConfig">
+            <summary>
+            Optional. The configuration of the synthesized audio.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.StreamingSynthesizeConfig.CustomPronunciationsFieldNumber">
+            <summary>Field number for the "custom_pronunciations" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.StreamingSynthesizeConfig.CustomPronunciations">
+             <summary>
+             Optional. The pronunciation customizations are applied to the input. If
+             this is set, the input is synthesized using the given pronunciation
+             customizations.
+            
+             The initial support is for en-us, with plans to expand to other locales in
+             the future. Instant Clone voices aren't supported.
+            
+             In order to customize the pronunciation of a phrase, there must be an exact
+             match of the phrase in the input types. If using SSML, the phrase must not
+             be inside a phoneme tag.
+             </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.StreamingSynthesisInput">
+            <summary>
+            Input to be synthesized.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.StreamingSynthesisInput.TextFieldNumber">
+            <summary>Field number for the "text" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.StreamingSynthesisInput.Text">
+            <summary>
+            The raw text to be synthesized. It is recommended that each input
+            contains complete, terminating sentences, which results in better prosody
+            in the output audio.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.StreamingSynthesisInput.HasText">
+            <summary>Gets whether the "text" field is set</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.StreamingSynthesisInput.ClearText">
+            <summary> Clears the value of the oneof if it's currently set to "text" </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.StreamingSynthesisInput.MarkupFieldNumber">
+            <summary>Field number for the "markup" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.StreamingSynthesisInput.Markup">
+            <summary>
+            Markup for HD voices specifically. This field may not be used with any
+            other voices.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.StreamingSynthesisInput.HasMarkup">
+            <summary>Gets whether the "markup" field is set</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.StreamingSynthesisInput.ClearMarkup">
+            <summary> Clears the value of the oneof if it's currently set to "markup" </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.StreamingSynthesisInput.InputSourceOneofCase">
+            <summary>Enum of possible cases for the "input_source" oneof.</summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.StreamingSynthesizeRequest">
+            <summary>
+            Request message for the `StreamingSynthesize` method. Multiple
+            `StreamingSynthesizeRequest` messages are sent in one call.
+            The first message must contain a `streaming_config` that
+            fully specifies the request configuration and must not contain `input`. All
+            subsequent messages must only have `input` set.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.StreamingSynthesizeRequest.StreamingConfigFieldNumber">
+            <summary>Field number for the "streaming_config" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.StreamingSynthesizeRequest.StreamingConfig">
+            <summary>
+            StreamingSynthesizeConfig to be used in this streaming attempt. Only
+            specified in the first message sent in a `StreamingSynthesize` call.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.StreamingSynthesizeRequest.InputFieldNumber">
+            <summary>Field number for the "input" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.StreamingSynthesizeRequest.Input">
+            <summary>
+            Input to synthesize. Specified in all messages but the first in a
+            `StreamingSynthesize` call.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.StreamingSynthesizeRequest.StreamingRequestOneofCase">
+            <summary>Enum of possible cases for the "streaming_request" oneof.</summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.StreamingSynthesizeResponse">
+            <summary>
+            `StreamingSynthesizeResponse` is the only message returned to the
+            client by `StreamingSynthesize` method. A series of zero or more
+            `StreamingSynthesizeResponse` messages are streamed back to the client.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.StreamingSynthesizeResponse.AudioContentFieldNumber">
+            <summary>Field number for the "audio_content" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.StreamingSynthesizeResponse.AudioContent">
+            <summary>
+            The audio data bytes encoded as specified in the request. This is
+            headerless LINEAR16 audio with a sample rate of 24000.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.TextToSpeech">
+            <summary>
+            Service that implements Google Cloud Text-to-Speech API.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeech.Descriptor">
+            <summary>Service descriptor</summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechBase">
+            <summary>Base class for server-side implementations of TextToSpeech</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechBase.ListVoices(Google.Cloud.TextToSpeech.V1.ListVoicesRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Returns a list of Voice supported for synthesis.
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechBase.SynthesizeSpeech(Google.Cloud.TextToSpeech.V1.SynthesizeSpeechRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Synthesizes speech synchronously: receive results after all text input
+            has been processed.
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechBase.StreamingSynthesize(Grpc.Core.IAsyncStreamReader{Google.Cloud.TextToSpeech.V1.StreamingSynthesizeRequest},Grpc.Core.IServerStreamWriter{Google.Cloud.TextToSpeech.V1.StreamingSynthesizeResponse},Grpc.Core.ServerCallContext)">
+            <summary>
+            Performs bidirectional streaming speech synthesis: receives audio while
+            sending text.
+            </summary>
+            <param name="requestStream">Used for reading requests from the client.</param>
+            <param name="responseStream">Used for sending responses back to the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>A task indicating completion of the handler.</returns>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechClient">
+            <summary>Client for TextToSpeech</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechClient.#ctor(Grpc.Core.ChannelBase)">
+            <summary>Creates a new client for TextToSpeech</summary>
+            <param name="channel">The channel to use to make remote calls.</param>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechClient.#ctor(Grpc.Core.CallInvoker)">
+            <summary>Creates a new client for TextToSpeech that uses a custom <c>CallInvoker</c>.</summary>
+            <param name="callInvoker">The callInvoker to use to make remote calls.</param>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechClient.#ctor">
+            <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Protected constructor to allow creation of configured clients.</summary>
+            <param name="configuration">The client configuration.</param>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechClient.ListVoices(Google.Cloud.TextToSpeech.V1.ListVoicesRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of Voice supported for synthesis.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechClient.ListVoices(Google.Cloud.TextToSpeech.V1.ListVoicesRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Returns a list of Voice supported for synthesis.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechClient.ListVoicesAsync(Google.Cloud.TextToSpeech.V1.ListVoicesRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of Voice supported for synthesis.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechClient.ListVoicesAsync(Google.Cloud.TextToSpeech.V1.ListVoicesRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Returns a list of Voice supported for synthesis.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechClient.SynthesizeSpeech(Google.Cloud.TextToSpeech.V1.SynthesizeSpeechRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Synthesizes speech synchronously: receive results after all text input
+            has been processed.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechClient.SynthesizeSpeech(Google.Cloud.TextToSpeech.V1.SynthesizeSpeechRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Synthesizes speech synchronously: receive results after all text input
+            has been processed.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechClient.SynthesizeSpeechAsync(Google.Cloud.TextToSpeech.V1.SynthesizeSpeechRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Synthesizes speech synchronously: receive results after all text input
+            has been processed.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechClient.SynthesizeSpeechAsync(Google.Cloud.TextToSpeech.V1.SynthesizeSpeechRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Synthesizes speech synchronously: receive results after all text input
+            has been processed.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechClient.StreamingSynthesize(Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Performs bidirectional streaming speech synthesis: receives audio while
+            sending text.
+            </summary>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechClient.StreamingSynthesize(Grpc.Core.CallOptions)">
+            <summary>
+            Performs bidirectional streaming speech synthesis: receives audio while
+            sending text.
+            </summary>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeech.BindService(Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechBase)">
+            <summary>Creates service definition that can be registered with a server</summary>
+            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeech.BindService(Grpc.Core.ServiceBinderBase,Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechBase)">
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
+            Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
+            <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
+            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.CloudTtsLrsReflection">
+            <summary>Holder for reflection information generated from google/cloud/texttospeech/v1/cloud_tts_lrs.proto</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.CloudTtsLrsReflection.Descriptor">
+            <summary>File descriptor for google/cloud/texttospeech/v1/cloud_tts_lrs.proto</summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest">
+            <summary>
+            The top-level message sent by the client for the
+            `SynthesizeLongAudio` method.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest.ParentFieldNumber">
+            <summary>Field number for the "parent" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest.Parent">
+            <summary>
+            The resource states of the request in the form of
+            `projects/*/locations/*`.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest.InputFieldNumber">
+            <summary>Field number for the "input" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest.Input">
+            <summary>
+            Required. The Synthesizer requires either plain text or SSML as input.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest.AudioConfigFieldNumber">
+            <summary>Field number for the "audio_config" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest.AudioConfig">
+            <summary>
+            Required. The configuration of the synthesized audio.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest.OutputGcsUriFieldNumber">
+            <summary>Field number for the "output_gcs_uri" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest.OutputGcsUri">
+            <summary>
+            Required. Specifies a Cloud Storage URI for the synthesis results. Must be
+            specified in the format: `gs://bucket_name/object_name`, and the bucket
+            must already exist.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest.VoiceFieldNumber">
+            <summary>Field number for the "voice" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest.Voice">
+            <summary>
+            Required. The desired voice of the synthesized audio.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioResponse">
+            <summary>
+            The message returned to the client by the `SynthesizeLongAudio` method.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioMetadata">
+            <summary>
+            Metadata for response returned by the `SynthesizeLongAudio` method.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioMetadata.StartTimeFieldNumber">
+            <summary>Field number for the "start_time" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioMetadata.StartTime">
+            <summary>
+            Time when the request was received.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioMetadata.LastUpdateTimeFieldNumber">
+            <summary>Field number for the "last_update_time" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioMetadata.LastUpdateTime">
+            <summary>
+            Deprecated. Do not use.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioMetadata.ProgressPercentageFieldNumber">
+            <summary>Field number for the "progress_percentage" field.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioMetadata.ProgressPercentage">
+            <summary>
+            The progress of the most recent processing update in percentage, ie. 70.0%.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesize">
+            <summary>
+            Service that implements Google Cloud Text-to-Speech API.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesize.Descriptor">
+            <summary>Service descriptor</summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesize.TextToSpeechLongAudioSynthesizeBase">
+            <summary>Base class for server-side implementations of TextToSpeechLongAudioSynthesize</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesize.TextToSpeechLongAudioSynthesizeBase.SynthesizeLongAudio(Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Synthesizes long form text asynchronously.
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesize.TextToSpeechLongAudioSynthesizeClient">
+            <summary>Client for TextToSpeechLongAudioSynthesize</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesize.TextToSpeechLongAudioSynthesizeClient.#ctor(Grpc.Core.ChannelBase)">
+            <summary>Creates a new client for TextToSpeechLongAudioSynthesize</summary>
+            <param name="channel">The channel to use to make remote calls.</param>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesize.TextToSpeechLongAudioSynthesizeClient.#ctor(Grpc.Core.CallInvoker)">
+            <summary>Creates a new client for TextToSpeechLongAudioSynthesize that uses a custom <c>CallInvoker</c>.</summary>
+            <param name="callInvoker">The callInvoker to use to make remote calls.</param>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesize.TextToSpeechLongAudioSynthesizeClient.#ctor">
+            <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesize.TextToSpeechLongAudioSynthesizeClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Protected constructor to allow creation of configured clients.</summary>
+            <param name="configuration">The client configuration.</param>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesize.TextToSpeechLongAudioSynthesizeClient.SynthesizeLongAudio(Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Synthesizes long form text asynchronously.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesize.TextToSpeechLongAudioSynthesizeClient.SynthesizeLongAudio(Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Synthesizes long form text asynchronously.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesize.TextToSpeechLongAudioSynthesizeClient.SynthesizeLongAudioAsync(Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Synthesizes long form text asynchronously.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesize.TextToSpeechLongAudioSynthesizeClient.SynthesizeLongAudioAsync(Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Synthesizes long form text asynchronously.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesize.TextToSpeechLongAudioSynthesizeClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesize.TextToSpeechLongAudioSynthesizeClient.CreateOperationsClient">
+            <summary>
+            Creates a new instance of <see cref="T:Google.LongRunning.Operations.OperationsClient"/> using the same call invoker as
+            this client.
+            </summary>
+            <returns>A new Operations client for the same target as this client.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesize.BindService(Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesize.TextToSpeechLongAudioSynthesizeBase)">
+            <summary>Creates service definition that can be registered with a server</summary>
+            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesize.BindService(Grpc.Core.ServiceBinderBase,Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesize.TextToSpeechLongAudioSynthesizeBase)">
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
+            Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
+            <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
+            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.ModelName">
+            <summary>Resource name for the <c>Model</c> resource.</summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.ModelName.ResourceNameType">
+            <summary>The possible contents of <see cref="T:Google.Cloud.TextToSpeech.V1.ModelName"/>.</summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.ModelName.ResourceNameType.Unparsed">
+            <summary>An unparsed resource name.</summary>
+        </member>
+        <member name="F:Google.Cloud.TextToSpeech.V1.ModelName.ResourceNameType.ProjectLocationModel">
+            <summary>
+            A resource name with pattern <c>projects/{project}/locations/{location}/models/{model}</c>.
+            </summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.ModelName.FromUnparsed(Google.Api.Gax.UnparsedResourceName)">
+            <summary>Creates a <see cref="T:Google.Cloud.TextToSpeech.V1.ModelName"/> containing an unparsed resource name.</summary>
+            <param name="unparsedResourceName">The unparsed resource name. Must not be <c>null</c>.</param>
+            <returns>
+            A new instance of <see cref="T:Google.Cloud.TextToSpeech.V1.ModelName"/> containing the provided <paramref name="unparsedResourceName"/>.
+            </returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.ModelName.FromProjectLocationModel(System.String,System.String,System.String)">
+            <summary>
+            Creates a <see cref="T:Google.Cloud.TextToSpeech.V1.ModelName"/> with the pattern <c>projects/{project}/locations/{location}/models/{model}</c>
+            .
+            </summary>
+            <param name="projectId">The <c>Project</c> ID. Must not be <c>null</c> or empty.</param>
+            <param name="locationId">The <c>Location</c> ID. Must not be <c>null</c> or empty.</param>
+            <param name="modelId">The <c>Model</c> ID. Must not be <c>null</c> or empty.</param>
+            <returns>A new instance of <see cref="T:Google.Cloud.TextToSpeech.V1.ModelName"/> constructed from the provided ids.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.ModelName.Format(System.String,System.String,System.String)">
+            <summary>
+            Formats the IDs into the string representation of this <see cref="T:Google.Cloud.TextToSpeech.V1.ModelName"/> with pattern
+            <c>projects/{project}/locations/{location}/models/{model}</c>.
+            </summary>
+            <param name="projectId">The <c>Project</c> ID. Must not be <c>null</c> or empty.</param>
+            <param name="locationId">The <c>Location</c> ID. Must not be <c>null</c> or empty.</param>
+            <param name="modelId">The <c>Model</c> ID. Must not be <c>null</c> or empty.</param>
+            <returns>
+            The string representation of this <see cref="T:Google.Cloud.TextToSpeech.V1.ModelName"/> with pattern
+            <c>projects/{project}/locations/{location}/models/{model}</c>.
+            </returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.ModelName.FormatProjectLocationModel(System.String,System.String,System.String)">
+            <summary>
+            Formats the IDs into the string representation of this <see cref="T:Google.Cloud.TextToSpeech.V1.ModelName"/> with pattern
+            <c>projects/{project}/locations/{location}/models/{model}</c>.
+            </summary>
+            <param name="projectId">The <c>Project</c> ID. Must not be <c>null</c> or empty.</param>
+            <param name="locationId">The <c>Location</c> ID. Must not be <c>null</c> or empty.</param>
+            <param name="modelId">The <c>Model</c> ID. Must not be <c>null</c> or empty.</param>
+            <returns>
+            The string representation of this <see cref="T:Google.Cloud.TextToSpeech.V1.ModelName"/> with pattern
+            <c>projects/{project}/locations/{location}/models/{model}</c>.
+            </returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.ModelName.Parse(System.String)">
+            <summary>Parses the given resource name string into a new <see cref="T:Google.Cloud.TextToSpeech.V1.ModelName"/> instance.</summary>
+            <remarks>
+            To parse successfully, the resource name must be formatted as one of the following:
+            <list type="bullet">
+            <item><description><c>projects/{project}/locations/{location}/models/{model}</c></description></item>
+            </list>
+            </remarks>
+            <param name="modelName">The resource name in string form. Must not be <c>null</c>.</param>
+            <returns>The parsed <see cref="T:Google.Cloud.TextToSpeech.V1.ModelName"/> if successful.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.ModelName.Parse(System.String,System.Boolean)">
+            <summary>
+            Parses the given resource name string into a new <see cref="T:Google.Cloud.TextToSpeech.V1.ModelName"/> instance; optionally allowing an
+            unparseable resource name.
+            </summary>
+            <remarks>
+            To parse successfully, the resource name must be formatted as one of the following:
+            <list type="bullet">
+            <item><description><c>projects/{project}/locations/{location}/models/{model}</c></description></item>
+            </list>
+            Or may be in any format if <paramref name="allowUnparsed"/> is <c>true</c>.
+            </remarks>
+            <param name="modelName">The resource name in string form. Must not be <c>null</c>.</param>
+            <param name="allowUnparsed">
+            If <c>true</c> will successfully store an unparseable resource name into the <see cref="P:Google.Cloud.TextToSpeech.V1.ModelName.UnparsedResource"/>
+            property; otherwise will throw an <see cref="T:System.ArgumentException"/> if an unparseable resource name is
+            specified.
+            </param>
+            <returns>The parsed <see cref="T:Google.Cloud.TextToSpeech.V1.ModelName"/> if successful.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.ModelName.TryParse(System.String,Google.Cloud.TextToSpeech.V1.ModelName@)">
+            <summary>
+            Tries to parse the given resource name string into a new <see cref="T:Google.Cloud.TextToSpeech.V1.ModelName"/> instance.
+            </summary>
+            <remarks>
+            To parse successfully, the resource name must be formatted as one of the following:
+            <list type="bullet">
+            <item><description><c>projects/{project}/locations/{location}/models/{model}</c></description></item>
+            </list>
+            </remarks>
+            <param name="modelName">The resource name in string form. Must not be <c>null</c>.</param>
+            <param name="result">
+            When this method returns, the parsed <see cref="T:Google.Cloud.TextToSpeech.V1.ModelName"/>, or <c>null</c> if parsing failed.
+            </param>
+            <returns><c>true</c> if the name was parsed successfully; <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.ModelName.TryParse(System.String,System.Boolean,Google.Cloud.TextToSpeech.V1.ModelName@)">
+            <summary>
+            Tries to parse the given resource name string into a new <see cref="T:Google.Cloud.TextToSpeech.V1.ModelName"/> instance; optionally
+            allowing an unparseable resource name.
+            </summary>
+            <remarks>
+            To parse successfully, the resource name must be formatted as one of the following:
+            <list type="bullet">
+            <item><description><c>projects/{project}/locations/{location}/models/{model}</c></description></item>
+            </list>
+            Or may be in any format if <paramref name="allowUnparsed"/> is <c>true</c>.
+            </remarks>
+            <param name="modelName">The resource name in string form. Must not be <c>null</c>.</param>
+            <param name="allowUnparsed">
+            If <c>true</c> will successfully store an unparseable resource name into the <see cref="P:Google.Cloud.TextToSpeech.V1.ModelName.UnparsedResource"/>
+            property; otherwise will throw an <see cref="T:System.ArgumentException"/> if an unparseable resource name is
+            specified.
+            </param>
+            <param name="result">
+            When this method returns, the parsed <see cref="T:Google.Cloud.TextToSpeech.V1.ModelName"/>, or <c>null</c> if parsing failed.
+            </param>
+            <returns><c>true</c> if the name was parsed successfully; <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.ModelName.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Constructs a new instance of a <see cref="T:Google.Cloud.TextToSpeech.V1.ModelName"/> class from the component parts of pattern
+            <c>projects/{project}/locations/{location}/models/{model}</c>
+            </summary>
+            <param name="projectId">The <c>Project</c> ID. Must not be <c>null</c> or empty.</param>
+            <param name="locationId">The <c>Location</c> ID. Must not be <c>null</c> or empty.</param>
+            <param name="modelId">The <c>Model</c> ID. Must not be <c>null</c> or empty.</param>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.ModelName.Type">
+            <summary>The <see cref="T:Google.Cloud.TextToSpeech.V1.ModelName.ResourceNameType"/> of the contained resource name.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.ModelName.UnparsedResource">
+            <summary>
+            The contained <see cref="T:Google.Api.Gax.UnparsedResourceName"/>. Only non-<c>null</c> if this instance contains an
+            unparsed resource name.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.ModelName.LocationId">
+            <summary>
+            The <c>Location</c> ID. Will not be <c>null</c>, unless this instance contains an unparsed resource name.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.ModelName.ModelId">
+            <summary>
+            The <c>Model</c> ID. Will not be <c>null</c>, unless this instance contains an unparsed resource name.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.ModelName.ProjectId">
+            <summary>
+            The <c>Project</c> ID. Will not be <c>null</c>, unless this instance contains an unparsed resource name.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.ModelName.IsKnownPattern">
+            <summary>Whether this instance contains a resource name with a known pattern.</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.ModelName.ToString">
+            <summary>The string representation of the resource name.</summary>
+            <returns>The string representation of the resource name.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.ModelName.GetHashCode">
+            <summary>Returns a hash code for this resource name.</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.ModelName.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.ModelName.Equals(Google.Cloud.TextToSpeech.V1.ModelName)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.ModelName.op_Equality(Google.Cloud.TextToSpeech.V1.ModelName,Google.Cloud.TextToSpeech.V1.ModelName)">
+            <summary>Determines whether two specified resource names have the same value.</summary>
+            <param name="a">The first resource name to compare, or null.</param>
+            <param name="b">The second resource name to compare, or null.</param>
+            <returns>
+            true if the value of <paramref name="a"/> is the same as the value of <paramref name="b"/>; otherwise,
+            false.
+            </returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.ModelName.op_Inequality(Google.Cloud.TextToSpeech.V1.ModelName,Google.Cloud.TextToSpeech.V1.ModelName)">
+            <summary>Determines whether two specified resource names have different values.</summary>
+            <param name="a">The first resource name to compare, or null.</param>
+            <param name="b">The second resource name to compare, or null.</param>
+            <returns>
+            true if the value of <paramref name="a"/> is different from the value of <paramref name="b"/>; otherwise,
+            false.
+            </returns>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.PackageApiMetadata">
+            <summary>Static class to provide common access to package-wide API metadata.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.PackageApiMetadata.ApiMetadata">
+            <summary>The <see cref="T:Google.Api.Gax.Grpc.ApiMetadata"/> for services in this package.</summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.TextToSpeechSettings">
+            <summary>Settings for <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechClient"/> instances.</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechSettings.GetDefault">
+            <summary>Get a new instance of the default <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechSettings"/>.</summary>
+            <returns>A new instance of the default <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechSettings"/>.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechSettings.#ctor">
+            <summary>Constructs a new <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechSettings"/> object with default settings.</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechSettings.ListVoicesSettings">
+            <summary>
+            <see cref="T:Google.Api.Gax.Grpc.CallSettings"/> for synchronous and asynchronous calls to
+            <c>TextToSpeechClient.ListVoices</c> and <c>TextToSpeechClient.ListVoicesAsync</c>.
+            </summary>
+            <remarks>
+            <list type="bullet">
+            <item><description>Initial retry delay: 100 milliseconds.</description></item>
+            <item><description>Retry delay multiplier: 1.3</description></item>
+            <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+            <item><description>Maximum attempts: Unlimited</description></item>
+            <item>
+            <description>
+            Retriable status codes: <see cref="F:Grpc.Core.StatusCode.Unavailable"/>,
+            <see cref="F:Grpc.Core.StatusCode.DeadlineExceeded"/>.
+            </description>
+            </item>
+            <item><description>Timeout: 300 seconds.</description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechSettings.SynthesizeSpeechSettings">
+            <summary>
+            <see cref="T:Google.Api.Gax.Grpc.CallSettings"/> for synchronous and asynchronous calls to
+            <c>TextToSpeechClient.SynthesizeSpeech</c> and <c>TextToSpeechClient.SynthesizeSpeechAsync</c>.
+            </summary>
+            <remarks>
+            <list type="bullet">
+            <item><description>Initial retry delay: 100 milliseconds.</description></item>
+            <item><description>Retry delay multiplier: 1.3</description></item>
+            <item><description>Retry maximum delay: 60000 milliseconds.</description></item>
+            <item><description>Maximum attempts: Unlimited</description></item>
+            <item>
+            <description>
+            Retriable status codes: <see cref="F:Grpc.Core.StatusCode.Unavailable"/>,
+            <see cref="F:Grpc.Core.StatusCode.DeadlineExceeded"/>.
+            </description>
+            </item>
+            <item><description>Timeout: 300 seconds.</description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechSettings.StreamingSynthesizeSettings">
+            <summary>
+            <see cref="T:Google.Api.Gax.Grpc.CallSettings"/> for synchronous and asynchronous calls to
+            <c>TextToSpeechClient.StreamingSynthesize</c> and <c>TextToSpeechClient.StreamingSynthesizeAsync</c>.
+            </summary>
+            <remarks>Timeout: 300 seconds.</remarks>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechSettings.StreamingSynthesizeStreamingSettings">
+            <summary>
+            <see cref="T:Google.Api.Gax.Grpc.BidirectionalStreamingSettings"/> for calls to <c>TextToSpeechClient.StreamingSynthesize</c>
+             and <c>TextToSpeechClient.StreamingSynthesizeAsync</c>.
+            </summary>
+            <remarks>The default local send queue size is 100.</remarks>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechSettings.Clone">
+            <summary>Creates a deep clone of this object, with all the same property values.</summary>
+            <returns>A deep clone of this <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechSettings"/> object.</returns>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.TextToSpeechClientBuilder">
+            <summary>
+            Builder class for <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechClient"/> to provide simple configuration of credentials, endpoint etc.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechClientBuilder.Settings">
+            <summary>The settings to use for RPCs, or <c>null</c> for the default settings.</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClientBuilder.#ctor">
+            <summary>Creates a new builder with default settings.</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClientBuilder.Build">
+            <summary>Builds the resulting client.</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClientBuilder.BuildAsync(System.Threading.CancellationToken)">
+            <summary>Builds the resulting client asynchronously.</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClientBuilder.GetChannelPool">
+            <summary>Returns the channel pool to use when no other options are specified.</summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.TextToSpeechClient">
+            <summary>TextToSpeech client wrapper, for convenient use.</summary>
+            <remarks>
+            Service that implements Google Cloud Text-to-Speech API.
+            </remarks>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.DefaultEndpoint">
+            <summary>
+            The default endpoint for the TextToSpeech service, which is a host of "texttospeech.googleapis.com" and a
+            port of 443.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.DefaultScopes">
+            <summary>The default TextToSpeech scopes.</summary>
+            <remarks>
+            The default TextToSpeech scopes are:
+            <list type="bullet">
+            <item><description>https://www.googleapis.com/auth/cloud-platform</description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.ServiceMetadata">
+            <summary>The service metadata associated with this client type.</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.CreateAsync(System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously creates a <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechClient"/> using the default credentials, endpoint and
+            settings. To specify custom credentials or other settings, use <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechClientBuilder"/>.
+            </summary>
+            <param name="cancellationToken">
+            The <see cref="T:System.Threading.CancellationToken"/> to use while creating the client.
+            </param>
+            <returns>The task representing the created <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechClient"/>.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.Create">
+            <summary>
+            Synchronously creates a <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechClient"/> using the default credentials, endpoint and
+            settings. To specify custom credentials or other settings, use <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechClientBuilder"/>.
+            </summary>
+            <returns>The created <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechClient"/>.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.Create(Grpc.Core.CallInvoker,Google.Cloud.TextToSpeech.V1.TextToSpeechSettings,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Creates a <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechClient"/> which uses the specified call invoker for remote operations.
+            </summary>
+            <param name="callInvoker">
+            The <see cref="T:Grpc.Core.CallInvoker"/> for remote operations. Must not be null.
+            </param>
+            <param name="settings">Optional <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechSettings"/>.</param>
+            <param name="logger">Optional <see cref="T:Microsoft.Extensions.Logging.ILogger"/>.</param>
+            <returns>The created <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechClient"/>.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.ShutdownDefaultChannelsAsync">
+            <summary>
+            Shuts down any channels automatically created by <see cref="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.Create"/> and
+            <see cref="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.CreateAsync(System.Threading.CancellationToken)"/>. Channels which weren't automatically created are not
+            affected.
+            </summary>
+            <remarks>
+            After calling this method, further calls to <see cref="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.Create"/> and
+            <see cref="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.CreateAsync(System.Threading.CancellationToken)"/> will create new channels, which could in turn be shut down
+            by another call to this method.
+            </remarks>
+            <returns>A task representing the asynchronous shutdown operation.</returns>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.GrpcClient">
+            <summary>The underlying gRPC TextToSpeech client</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.ListVoices(Google.Cloud.TextToSpeech.V1.ListVoicesRequest,Google.Api.Gax.Grpc.CallSettings)">
+            <summary>
+            Returns a list of Voice supported for synthesis.
+            </summary>
+            <param name="request">The request object containing all of the parameters for the API call.</param>
+            <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+            <returns>The RPC response.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.ListVoicesAsync(Google.Cloud.TextToSpeech.V1.ListVoicesRequest,Google.Api.Gax.Grpc.CallSettings)">
+            <summary>
+            Returns a list of Voice supported for synthesis.
+            </summary>
+            <param name="request">The request object containing all of the parameters for the API call.</param>
+            <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+            <returns>A Task containing the RPC response.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.ListVoicesAsync(Google.Cloud.TextToSpeech.V1.ListVoicesRequest,System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of Voice supported for synthesis.
+            </summary>
+            <param name="request">The request object containing all of the parameters for the API call.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to use for this RPC.</param>
+            <returns>A Task containing the RPC response.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.ListVoices(System.String,Google.Api.Gax.Grpc.CallSettings)">
+            <summary>
+            Returns a list of Voice supported for synthesis.
+            </summary>
+            <param name="languageCode">
+            Optional. Recommended.
+            [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
+            If not specified, the API will return all supported voices.
+            If specified, the ListVoices call will only return voices that can be used
+            to synthesize this language_code. For example, if you specify `"en-NZ"`,
+            all `"en-NZ"` voices will be returned. If you specify `"no"`, both
+            `"no-\*"` (Norwegian) and `"nb-\*"` (Norwegian Bokmal) voices will be
+            returned.
+            </param>
+            <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+            <returns>The RPC response.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.ListVoicesAsync(System.String,Google.Api.Gax.Grpc.CallSettings)">
+            <summary>
+            Returns a list of Voice supported for synthesis.
+            </summary>
+            <param name="languageCode">
+            Optional. Recommended.
+            [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
+            If not specified, the API will return all supported voices.
+            If specified, the ListVoices call will only return voices that can be used
+            to synthesize this language_code. For example, if you specify `"en-NZ"`,
+            all `"en-NZ"` voices will be returned. If you specify `"no"`, both
+            `"no-\*"` (Norwegian) and `"nb-\*"` (Norwegian Bokmal) voices will be
+            returned.
+            </param>
+            <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+            <returns>A Task containing the RPC response.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.ListVoicesAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of Voice supported for synthesis.
+            </summary>
+            <param name="languageCode">
+            Optional. Recommended.
+            [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
+            If not specified, the API will return all supported voices.
+            If specified, the ListVoices call will only return voices that can be used
+            to synthesize this language_code. For example, if you specify `"en-NZ"`,
+            all `"en-NZ"` voices will be returned. If you specify `"no"`, both
+            `"no-\*"` (Norwegian) and `"nb-\*"` (Norwegian Bokmal) voices will be
+            returned.
+            </param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to use for this RPC.</param>
+            <returns>A Task containing the RPC response.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.SynthesizeSpeech(Google.Cloud.TextToSpeech.V1.SynthesizeSpeechRequest,Google.Api.Gax.Grpc.CallSettings)">
+            <summary>
+            Synthesizes speech synchronously: receive results after all text input
+            has been processed.
+            </summary>
+            <param name="request">The request object containing all of the parameters for the API call.</param>
+            <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+            <returns>The RPC response.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.SynthesizeSpeechAsync(Google.Cloud.TextToSpeech.V1.SynthesizeSpeechRequest,Google.Api.Gax.Grpc.CallSettings)">
+            <summary>
+            Synthesizes speech synchronously: receive results after all text input
+            has been processed.
+            </summary>
+            <param name="request">The request object containing all of the parameters for the API call.</param>
+            <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+            <returns>A Task containing the RPC response.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.SynthesizeSpeechAsync(Google.Cloud.TextToSpeech.V1.SynthesizeSpeechRequest,System.Threading.CancellationToken)">
+            <summary>
+            Synthesizes speech synchronously: receive results after all text input
+            has been processed.
+            </summary>
+            <param name="request">The request object containing all of the parameters for the API call.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to use for this RPC.</param>
+            <returns>A Task containing the RPC response.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.SynthesizeSpeech(Google.Cloud.TextToSpeech.V1.SynthesisInput,Google.Cloud.TextToSpeech.V1.VoiceSelectionParams,Google.Cloud.TextToSpeech.V1.AudioConfig,Google.Api.Gax.Grpc.CallSettings)">
+            <summary>
+            Synthesizes speech synchronously: receive results after all text input
+            has been processed.
+            </summary>
+            <param name="input">
+            Required. The Synthesizer requires either plain text or SSML as input.
+            </param>
+            <param name="voice">
+            Required. The desired voice of the synthesized audio.
+            </param>
+            <param name="audioConfig">
+            Required. The configuration of the synthesized audio.
+            </param>
+            <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+            <returns>The RPC response.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.SynthesizeSpeechAsync(Google.Cloud.TextToSpeech.V1.SynthesisInput,Google.Cloud.TextToSpeech.V1.VoiceSelectionParams,Google.Cloud.TextToSpeech.V1.AudioConfig,Google.Api.Gax.Grpc.CallSettings)">
+            <summary>
+            Synthesizes speech synchronously: receive results after all text input
+            has been processed.
+            </summary>
+            <param name="input">
+            Required. The Synthesizer requires either plain text or SSML as input.
+            </param>
+            <param name="voice">
+            Required. The desired voice of the synthesized audio.
+            </param>
+            <param name="audioConfig">
+            Required. The configuration of the synthesized audio.
+            </param>
+            <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+            <returns>A Task containing the RPC response.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.SynthesizeSpeechAsync(Google.Cloud.TextToSpeech.V1.SynthesisInput,Google.Cloud.TextToSpeech.V1.VoiceSelectionParams,Google.Cloud.TextToSpeech.V1.AudioConfig,System.Threading.CancellationToken)">
+            <summary>
+            Synthesizes speech synchronously: receive results after all text input
+            has been processed.
+            </summary>
+            <param name="input">
+            Required. The Synthesizer requires either plain text or SSML as input.
+            </param>
+            <param name="voice">
+            Required. The desired voice of the synthesized audio.
+            </param>
+            <param name="audioConfig">
+            Required. The configuration of the synthesized audio.
+            </param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to use for this RPC.</param>
+            <returns>A Task containing the RPC response.</returns>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.StreamingSynthesizeStream">
+            <summary>
+            Bidirectional streaming methods for
+            <see cref="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.StreamingSynthesize(Google.Api.Gax.Grpc.CallSettings,Google.Api.Gax.Grpc.BidirectionalStreamingSettings)"/>.
+            </summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClient.StreamingSynthesize(Google.Api.Gax.Grpc.CallSettings,Google.Api.Gax.Grpc.BidirectionalStreamingSettings)">
+            <summary>
+            Performs bidirectional streaming speech synthesis: receives audio while
+            sending text.
+            </summary>
+            <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+            <param name="streamingSettings">If not null, applies streaming overrides to this RPC call.</param>
+            <returns>The client-server stream.</returns>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.TextToSpeechClientImpl">
+            <summary>TextToSpeech client wrapper implementation, for convenient use.</summary>
+            <remarks>
+            Service that implements Google Cloud Text-to-Speech API.
+            </remarks>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClientImpl.#ctor(Google.Cloud.TextToSpeech.V1.TextToSpeech.TextToSpeechClient,Google.Cloud.TextToSpeech.V1.TextToSpeechSettings,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Constructs a client wrapper for the TextToSpeech service, with the specified gRPC client and settings.
+            </summary>
+            <param name="grpcClient">The underlying gRPC client.</param>
+            <param name="settings">The base <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechSettings"/> used within this client.</param>
+            <param name="logger">Optional <see cref="T:Microsoft.Extensions.Logging.ILogger"/> to use within this client.</param>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechClientImpl.GrpcClient">
+            <summary>The underlying gRPC TextToSpeech client</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClientImpl.ListVoices(Google.Cloud.TextToSpeech.V1.ListVoicesRequest,Google.Api.Gax.Grpc.CallSettings)">
+            <summary>
+            Returns a list of Voice supported for synthesis.
+            </summary>
+            <param name="request">The request object containing all of the parameters for the API call.</param>
+            <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+            <returns>The RPC response.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClientImpl.ListVoicesAsync(Google.Cloud.TextToSpeech.V1.ListVoicesRequest,Google.Api.Gax.Grpc.CallSettings)">
+            <summary>
+            Returns a list of Voice supported for synthesis.
+            </summary>
+            <param name="request">The request object containing all of the parameters for the API call.</param>
+            <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+            <returns>A Task containing the RPC response.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClientImpl.SynthesizeSpeech(Google.Cloud.TextToSpeech.V1.SynthesizeSpeechRequest,Google.Api.Gax.Grpc.CallSettings)">
+            <summary>
+            Synthesizes speech synchronously: receive results after all text input
+            has been processed.
+            </summary>
+            <param name="request">The request object containing all of the parameters for the API call.</param>
+            <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+            <returns>The RPC response.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClientImpl.SynthesizeSpeechAsync(Google.Cloud.TextToSpeech.V1.SynthesizeSpeechRequest,Google.Api.Gax.Grpc.CallSettings)">
+            <summary>
+            Synthesizes speech synchronously: receive results after all text input
+            has been processed.
+            </summary>
+            <param name="request">The request object containing all of the parameters for the API call.</param>
+            <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+            <returns>A Task containing the RPC response.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClientImpl.StreamingSynthesizeStreamImpl.#ctor(Google.Cloud.TextToSpeech.V1.TextToSpeechClientImpl,Grpc.Core.AsyncDuplexStreamingCall{Google.Cloud.TextToSpeech.V1.StreamingSynthesizeRequest,Google.Cloud.TextToSpeech.V1.StreamingSynthesizeResponse},Google.Api.Gax.Grpc.BufferedClientStreamWriter{Google.Cloud.TextToSpeech.V1.StreamingSynthesizeRequest})">
+            <summary>Construct the bidirectional streaming method for <c>StreamingSynthesize</c>.</summary>
+            <param name="service">The service containing this streaming method.</param>
+            <param name="call">The underlying gRPC duplex streaming call.</param>
+            <param name="writeBuffer">
+            The <see cref="T:Google.Api.Gax.Grpc.BufferedClientStreamWriter`1"/> instance associated
+            with this streaming call.
+            </param>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechClientImpl.StreamingSynthesize(Google.Api.Gax.Grpc.CallSettings,Google.Api.Gax.Grpc.BidirectionalStreamingSettings)">
+            <summary>
+            Performs bidirectional streaming speech synthesis: receives audio while
+            sending text.
+            </summary>
+            <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+            <param name="streamingSettings">If not null, applies streaming overrides to this RPC call.</param>
+            <returns>The client-server stream.</returns>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeSettings">
+            <summary>Settings for <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient"/> instances.</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeSettings.GetDefault">
+            <summary>Get a new instance of the default <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeSettings"/>.</summary>
+            <returns>A new instance of the default <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeSettings"/>.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeSettings.#ctor">
+            <summary>
+            Constructs a new <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeSettings"/> object with default settings.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeSettings.SynthesizeLongAudioSettings">
+            <summary>
+            <see cref="T:Google.Api.Gax.Grpc.CallSettings"/> for synchronous and asynchronous calls to
+            <c>TextToSpeechLongAudioSynthesizeClient.SynthesizeLongAudio</c> and
+            <c>TextToSpeechLongAudioSynthesizeClient.SynthesizeLongAudioAsync</c>.
+            </summary>
+            <remarks>
+            <list type="bullet">
+            <item><description>This call will not be retried.</description></item>
+            <item><description>Timeout: 5000 seconds.</description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeSettings.SynthesizeLongAudioOperationsSettings">
+            <summary>
+            Long Running Operation settings for calls to <c>TextToSpeechLongAudioSynthesizeClient.SynthesizeLongAudio</c>
+             and <c>TextToSpeechLongAudioSynthesizeClient.SynthesizeLongAudioAsync</c>.
+            </summary>
+            <remarks>
+            Uses default <see cref="T:Google.Api.Gax.PollSettings"/> of:
+            <list type="bullet">
+            <item><description>Initial delay: 20 seconds.</description></item>
+            <item><description>Delay multiplier: 1.5</description></item>
+            <item><description>Maximum delay: 45 seconds.</description></item>
+            <item><description>Total timeout: 24 hours.</description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeSettings.Clone">
+            <summary>Creates a deep clone of this object, with all the same property values.</summary>
+            <returns>A deep clone of this <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeSettings"/> object.</returns>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClientBuilder">
+            <summary>
+            Builder class for <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient"/> to provide simple configuration of
+            credentials, endpoint etc.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClientBuilder.Settings">
+            <summary>The settings to use for RPCs, or <c>null</c> for the default settings.</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClientBuilder.#ctor">
+            <summary>Creates a new builder with default settings.</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClientBuilder.Build">
+            <summary>Builds the resulting client.</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClientBuilder.BuildAsync(System.Threading.CancellationToken)">
+            <summary>Builds the resulting client asynchronously.</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClientBuilder.GetChannelPool">
+            <summary>Returns the channel pool to use when no other options are specified.</summary>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient">
+            <summary>TextToSpeechLongAudioSynthesize client wrapper, for convenient use.</summary>
+            <remarks>
+            Service that implements Google Cloud Text-to-Speech API.
+            </remarks>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient.DefaultEndpoint">
+            <summary>
+            The default endpoint for the TextToSpeechLongAudioSynthesize service, which is a host of
+            "texttospeech.googleapis.com" and a port of 443.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient.DefaultScopes">
+            <summary>The default TextToSpeechLongAudioSynthesize scopes.</summary>
+            <remarks>
+            The default TextToSpeechLongAudioSynthesize scopes are:
+            <list type="bullet">
+            <item><description>https://www.googleapis.com/auth/cloud-platform</description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient.ServiceMetadata">
+            <summary>The service metadata associated with this client type.</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient.CreateAsync(System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously creates a <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient"/> using the default credentials,
+            endpoint and settings. To specify custom credentials or other settings, use
+            <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClientBuilder"/>.
+            </summary>
+            <param name="cancellationToken">
+            The <see cref="T:System.Threading.CancellationToken"/> to use while creating the client.
+            </param>
+            <returns>The task representing the created <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient"/>.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient.Create">
+            <summary>
+            Synchronously creates a <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient"/> using the default credentials,
+            endpoint and settings. To specify custom credentials or other settings, use
+            <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClientBuilder"/>.
+            </summary>
+            <returns>The created <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient"/>.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient.Create(Grpc.Core.CallInvoker,Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeSettings,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Creates a <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient"/> which uses the specified call invoker for
+            remote operations.
+            </summary>
+            <param name="callInvoker">
+            The <see cref="T:Grpc.Core.CallInvoker"/> for remote operations. Must not be null.
+            </param>
+            <param name="settings">Optional <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeSettings"/>.</param>
+            <param name="logger">Optional <see cref="T:Microsoft.Extensions.Logging.ILogger"/>.</param>
+            <returns>The created <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient"/>.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient.ShutdownDefaultChannelsAsync">
+            <summary>
+            Shuts down any channels automatically created by <see cref="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient.Create"/> and
+            <see cref="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient.CreateAsync(System.Threading.CancellationToken)"/>. Channels which weren't automatically created are not
+            affected.
+            </summary>
+            <remarks>
+            After calling this method, further calls to <see cref="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient.Create"/> and
+            <see cref="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient.CreateAsync(System.Threading.CancellationToken)"/> will create new channels, which could in turn be shut down
+            by another call to this method.
+            </remarks>
+            <returns>A task representing the asynchronous shutdown operation.</returns>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient.GrpcClient">
+            <summary>The underlying gRPC TextToSpeechLongAudioSynthesize client</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient.SynthesizeLongAudio(Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest,Google.Api.Gax.Grpc.CallSettings)">
+            <summary>
+            Synthesizes long form text asynchronously.
+            </summary>
+            <param name="request">The request object containing all of the parameters for the API call.</param>
+            <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+            <returns>The RPC response.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient.SynthesizeLongAudioAsync(Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest,Google.Api.Gax.Grpc.CallSettings)">
+            <summary>
+            Synthesizes long form text asynchronously.
+            </summary>
+            <param name="request">The request object containing all of the parameters for the API call.</param>
+            <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+            <returns>A Task containing the RPC response.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient.SynthesizeLongAudioAsync(Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest,System.Threading.CancellationToken)">
+            <summary>
+            Synthesizes long form text asynchronously.
+            </summary>
+            <param name="request">The request object containing all of the parameters for the API call.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> to use for this RPC.</param>
+            <returns>A Task containing the RPC response.</returns>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient.SynthesizeLongAudioOperationsClient">
+            <summary>The long-running operations client for <c>SynthesizeLongAudio</c>.</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient.PollOnceSynthesizeLongAudio(System.String,Google.Api.Gax.Grpc.CallSettings)">
+            <summary>
+            Poll an operation once, using an <c>operationName</c> from a previous invocation of <c>SynthesizeLongAudio</c>
+            .
+            </summary>
+            <param name="operationName">
+            The name of a previously invoked operation. Must not be <c>null</c> or empty.
+            </param>
+            <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+            <returns>The result of polling the operation.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient.PollOnceSynthesizeLongAudioAsync(System.String,Google.Api.Gax.Grpc.CallSettings)">
+            <summary>
+            Asynchronously poll an operation once, using an <c>operationName</c> from a previous invocation of
+            <c>SynthesizeLongAudio</c>.
+            </summary>
+            <param name="operationName">
+            The name of a previously invoked operation. Must not be <c>null</c> or empty.
+            </param>
+            <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+            <returns>A task representing the result of polling the operation.</returns>
+        </member>
+        <member name="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClientImpl">
+            <summary>TextToSpeechLongAudioSynthesize client wrapper implementation, for convenient use.</summary>
+            <remarks>
+            Service that implements Google Cloud Text-to-Speech API.
+            </remarks>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClientImpl.#ctor(Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesize.TextToSpeechLongAudioSynthesizeClient,Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeSettings,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Constructs a client wrapper for the TextToSpeechLongAudioSynthesize service, with the specified gRPC client
+            and settings.
+            </summary>
+            <param name="grpcClient">The underlying gRPC client.</param>
+            <param name="settings">
+            The base <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeSettings"/> used within this client.
+            </param>
+            <param name="logger">Optional <see cref="T:Microsoft.Extensions.Logging.ILogger"/> to use within this client.</param>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClientImpl.GrpcClient">
+            <summary>The underlying gRPC TextToSpeechLongAudioSynthesize client</summary>
+        </member>
+        <member name="P:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClientImpl.SynthesizeLongAudioOperationsClient">
+            <summary>The long-running operations client for <c>SynthesizeLongAudio</c>.</summary>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClientImpl.SynthesizeLongAudio(Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest,Google.Api.Gax.Grpc.CallSettings)">
+            <summary>
+            Synthesizes long form text asynchronously.
+            </summary>
+            <param name="request">The request object containing all of the parameters for the API call.</param>
+            <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+            <returns>The RPC response.</returns>
+        </member>
+        <member name="M:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClientImpl.SynthesizeLongAudioAsync(Google.Cloud.TextToSpeech.V1.SynthesizeLongAudioRequest,Google.Api.Gax.Grpc.CallSettings)">
+            <summary>
+            Synthesizes long form text asynchronously.
+            </summary>
+            <param name="request">The request object containing all of the parameters for the API call.</param>
+            <param name="callSettings">If not null, applies overrides to this RPC call.</param>
+            <returns>A Task containing the RPC response.</returns>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions">
+            <summary>Static class to provide extension methods to configure API clients.</summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddTextToSpeechClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Google.Cloud.TextToSpeech.V1.TextToSpeechClientBuilder})">
+            <summary>Adds a singleton <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechClient"/> to <paramref name="services"/>.</summary>
+            <param name="services">
+            The service collection to add the client to. The services are used to configure the client when requested.
+            </param>
+            <param name="action">
+            An optional action to invoke on the client builder. This is invoked before services from
+            <paramref name="services"/> are used.
+            </param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddTextToSpeechClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{System.IServiceProvider,Google.Cloud.TextToSpeech.V1.TextToSpeechClientBuilder})">
+            <summary>Adds a singleton <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechClient"/> to <paramref name="services"/>.</summary>
+            <param name="services">
+            The service collection to add the client to. The services are used to configure the client when requested.
+            </param>
+            <param name="action">
+            An optional action to invoke on the client builder. This is invoked before services from
+            <paramref name="services"/> are used.
+            </param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddTextToSpeechLongAudioSynthesizeClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClientBuilder})">
+            <summary>
+            Adds a singleton <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient"/> to <paramref name="services"/>.
+            </summary>
+            <param name="services">
+            The service collection to add the client to. The services are used to configure the client when requested.
+            </param>
+            <param name="action">
+            An optional action to invoke on the client builder. This is invoked before services from
+            <paramref name="services"/> are used.
+            </param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddTextToSpeechLongAudioSynthesizeClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{System.IServiceProvider,Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClientBuilder})">
+            <summary>
+            Adds a singleton <see cref="T:Google.Cloud.TextToSpeech.V1.TextToSpeechLongAudioSynthesizeClient"/> to <paramref name="services"/>.
+            </summary>
+            <param name="services">
+            The service collection to add the client to. The services are used to configure the client when requested.
+            </param>
+            <param name="action">
+            An optional action to invoke on the client builder. This is invoked before services from
+            <paramref name="services"/> are used.
+            </param>
+        </member>
+    </members>
+</doc>

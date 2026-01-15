@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Google.Cloud.TextToSpeech.V1</id>
+    <version>3.12.0</version>
+    <authors>Google LLC</authors>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <icon>NuGetIcon.png</icon>
+    <projectUrl>https://github.com/googleapis/google-cloud-dotnet</projectUrl>
+    <iconUrl>https://cloud.google.com/images/gcp-icon-64x64.png</iconUrl>
+    <description>Recommended Google client library to access the Google Cloud Text-to-Speech API v1, synthesizes natural-sounding speech by applying powerful neural network models.</description>
+    <copyright>Copyright 2025 Google LLC</copyright>
+    <tags>Speech Text-to-speech Google Cloud</tags>
+    <repository type="git" url="https://github.com/googleapis/google-cloud-dotnet" commit="3aec08055ee98b4b4a8fcbc6c8727453f77e1f4e" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.2">
+        <dependency id="Google.Api.Gax.Grpc" version="[4.9.0, 5.0.0)" exclude="Build,Analyzers" />
+        <dependency id="Google.LongRunning" version="[3.3.0, 4.0.0)" exclude="Build,Analyzers" />
+        <dependency id="Grpc.Core" version="[2.46.6, 3.0.0)" include="All" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Google.Api.Gax.Grpc" version="[4.9.0, 5.0.0)" exclude="Build,Analyzers" />
+        <dependency id="Google.LongRunning" version="[3.3.0, 4.0.0)" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
